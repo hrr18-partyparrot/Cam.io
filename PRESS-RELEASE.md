@@ -16,7 +16,7 @@
 ## SOLUTION ##
   > This is where CAM.IO comes in. The app allows for event organizers to organically/socially promote their event by incentivizing social influencers (and also their attendees) to promote their event on their behalf with referral reward system.
 
-  Another side-solution/benefit to this app is that it allows event organizers to identify their most loyal and influential customers so that they can "re-hire" them for their next upcoming event.
+  > Another side-solution/benefit to this app is that it allows event organizers to identify their most loyal and influential customers so that they can "re-hire" them for their next upcoming event.
 
 ## QUOTE FROM YOU ##
   > "A simple solution to increasing ticket sales for you event! Big or small!"
