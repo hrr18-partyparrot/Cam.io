@@ -1,4 +1,3 @@
-<<<<<<< cbcae188f693897cfe50b9a7c68df8ee926fd63b
 var express = require('express');
 var PORT = process.env.PORT || 8080;
 var path = require('path');
@@ -27,3 +26,4 @@ MongoClient.connect(db, function(err, db) {
   db.close();
 });
 
+app.listen(PORT);
