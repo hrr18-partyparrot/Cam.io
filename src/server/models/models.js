@@ -19,7 +19,7 @@ var eventSchema = new mongoose.Schema({
 
 //Ask Hoon and team for input on this. Task or date based. Define promotions.
 var rewardSchema = new mongoose.Schema({
-  name: name,
+  name: String,
   type: [],
   description: String,
 });
