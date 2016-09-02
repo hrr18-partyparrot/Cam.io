@@ -5,16 +5,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/PartyParrot');
-require('./mondels/models.js')
+require('./models/models.js')
 var app = express();
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '../public'));
-
-
-app.get('/', function(req, res) {
-  res.send("Hellooooo World!")
-});
-
+app.use(express.static(__dirname + '/../public'));
 
 app.listen(PORT);
