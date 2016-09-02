@@ -4,9 +4,8 @@
   "description": "Desc of Project",
   "main": "index.js",
   "scripts": {
-    "start": "node /src/server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-
+    "start": "node src/server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +25,7 @@
     "express": "^4.14.0",
     "jquery": "^3.1.0",
     "lodash": "^4.15.0",
+    "mongodb": "^2.2.9",
     "mongoose": "^4.1.0",
     "mysql": "^2.11.1",
     "react": "^15.3.1",
