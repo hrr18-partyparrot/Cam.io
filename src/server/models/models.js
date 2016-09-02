@@ -1,4 +1,3 @@
-<<<<<<< cbcae188f693897cfe50b9a7c68df8ee926fd63b
 var mongoose = require('mongoose');
 
 //update with auth.
@@ -24,8 +23,6 @@ var rewardSchema = new mongoose.Schema({
   type: [],
   description: String,
 });
-
-
 
 mongoose.model('User', userSchema);
 mongoose.model('Event', eventSchema);
