@@ -4,8 +4,10 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/PartyParrot');
-require('./mondels/models.js')
+
+var db =  process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost:27017/PartyParrot';
+mongoose.connect(db);
+require('./models/models.js')
 var app = express();
 
 app.use(bodyParser.json());
