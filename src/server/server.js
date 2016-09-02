@@ -1,3 +1,4 @@
+<<<<<<< cbcae188f693897cfe50b9a7c68df8ee926fd63b
 var express = require('express');
 var PORT = process.env.PORT || 8080;
 var path = require('path');
@@ -12,7 +13,7 @@ require('./models/models.js')
 var app = express();
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '../public'));
+app.use(express.static(__dirname + '/../public'));
 
 
 app.get('/', function(req, res) {
@@ -26,5 +27,3 @@ MongoClient.connect(db, function(err, db) {
   db.close();
 });
 
-
-app.listen(PORT);
