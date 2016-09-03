@@ -1,17 +1,99 @@
+html,
 body {
-	padding: 0 !important;
+  height: 120%;
+  background-color: #f9f9f9
 }
 
-.main {
-	padding-top: 70px;
+/*@media only screen and (max-width: 1400px) {
+  html,
+  body {
+    height: 120%;
+  }
+}*/
+
+@media only screen and (max-width: 776px) {
+  html,
+  body {
+    height: 100%;
+  }
 }
 
-.content {
-	padding:0 20px 0 20px;
+.scrolling-navbar {
+  -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+  -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+  transition: background .5s ease-in-out, padding .5s ease-in-out;
 }
 
-.title {
-	text-align: center;
-	margin: 30px;
-	padding: 10px 10px 1px 10px;
+.btn-light {
+  color: #fff;
+}
+
+.wide {
+  margin: 0 30px 0 30px;
+  padding: 3px;
+}
+
+/* ---- Carousel Styles ---- */
+.carousel-item:nth-child(1) {
+  background-image: url("http://mdbootstrap.com/images/slides/slide%20(6).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.carousel-item:nth-child(2) {
+  background-image: url("http://mdbootstrap.com/images/slides/slide%20(11).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carousel-item:nth-child(3) {
+  background-image: url("http://mdbootstrap.com/images/slides/slide%20(7).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* ------------------------- */
+
+.navbar {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.top-nav-collapse {
+  background-color: #e44;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+footer.page-footer {
+  background-color: #666;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #e44;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+  }
+}
+
+.carousel {
+  height: 50%;
+}
+
+@media (max-width: 776px) {
+  .carousel {
+    height: 100%;
+  }
+}
+
+.carousel-item,
+.active {
+  height: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.flex-center {
+  color: #fff;
 }
