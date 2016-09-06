@@ -20,10 +20,12 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "express-stormpath": "^3.1.5",
     "jquery": "^3.1.0",
     "lodash": "^4.15.0",
     "mongodb": "^2.2.9",
     "mongoose": "^4.1.0",
+    "morgan": "^1.7.0",
     "mysql": "^2.11.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
