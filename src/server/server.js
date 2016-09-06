@@ -1,29 +1,38 @@
 var express = require('express');
-var PORT = process.env.PORT || 8080;
 var path = require('path');
 var bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
+var middleware = './middleware/middleware';
+var stormpath = require('express-stormpath');
 
 
-var db =  process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost:27017/PartyParrot';
+
+var PORT = process.env.PORT || 8080;
+var db =  process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost/PartyParrot';
 mongoose.connect(db);
-require('./models/models.js')
+
 var app = express();
+
+
+require('./middleware/middleware')(app, express);
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
 
 
-app.get('/', function(req, res) {
-  res.send("Hellooooo World!")
+// app.get('/', function(req, res) {
+//   res.send("Hellooooo World!")
+// });
+
+// app.get('*', function(request,response){
+//   response.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+// });
+app.get('/secrets',stormpath.loginRequired,function(req,res){
+  res.send('Hi ' + req.user.givenName);
+})
+
+app.on('stormpath.ready', function() {
+  app.listen(PORT);
 });
 
-MongoClient.connect(db, function(err, db) {
-
-  console.log("Connected correctly to server");
-
-  db.close();
-});
-
-app.listen(PORT);
+module.exports = app;
