@@ -13,12 +13,13 @@ module.exports = function (app, express) {
     application:{
       href: 'https://api.stormpath.com/v1/applications/38BYzfpt1mubNI49Sj9nC4'
     },
-    web: {
-      spa: {
-        enabled: true,
-        view: path.join(__dirname, '/../../public', 'index.html')
-      }
-    }
+    website: true
+    // web: {
+    //   spa: {
+    //     enabled: true,
+    //     view: path.join(__dirname, '/../../public', 'index.html')
+    //   }
+    // }
   }));
 
 };
