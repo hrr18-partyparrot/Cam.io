@@ -11,6 +11,11 @@ module.exports = {
     filename: 'src/public/bundle.js'
   },
 
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
+  },
+
  module: {
     loaders: [
       {
