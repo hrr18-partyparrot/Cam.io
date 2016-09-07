@@ -10,7 +10,7 @@ var client = new Eventbrite(config.clientKey, config.clientSecret);
 
 
 var PORT = process.env.PORT || 8080;
-var db =  process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost/PartyParrot';
+var db =  process.env.MONGODB_URI || 'mongodb://localhost/PartyParrot';
 
 mongoose.connect(db);
 
