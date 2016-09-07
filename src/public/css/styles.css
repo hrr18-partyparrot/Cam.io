@@ -101,3 +101,16 @@ footer.page-footer {
 .flex-center {
   color: #fff;
 }
+
+/*************************React Related Classes*******************************/
+.app {
+  display: inline;
+}
+
+.index {
+  display: inline;
+}
+
+.logo {
+  display: inline;
+}

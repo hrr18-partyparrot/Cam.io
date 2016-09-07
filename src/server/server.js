@@ -19,6 +19,10 @@ app.get('/secrets',stormpath.loginRequired,function(req,res){
   res.send('Hi ' + req.user.givenName);
 })
 
+app.get('*', function (req, res) {
+ res.sendFile(path.join(__dirname, '/../public/index.html'));
+});
+
 app.on('stormpath.ready', function() {
   app.listen(PORT);
 });
