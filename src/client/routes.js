@@ -12,6 +12,5 @@ export default (
       <LogoutRoute path="/logout" />
       <Route path ="/create" component={Logo} />
     </AuthenticatedRoute>
-
   </Route>
 );
