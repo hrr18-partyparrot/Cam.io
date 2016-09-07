@@ -1,4 +1,6 @@
 import  React from 'react';
+import { Link } from 'react-router';
+import {LogoutLink, NotAuthenticated, Authenticated } from 'react-stormpath';
 
 export default class NavBar extends React.Component {
   render () {
@@ -14,15 +16,28 @@ export default class NavBar extends React.Component {
                 <img src="img/Logo.svg" style={{"width":"50px"}} />
               </a>
               <ul className="nav navbar-nav pull-right" style={{"marginTop":"3px"}}>
+                <Authenticated>
                 <li className="nav-item">
-                  <button className="btn-flat waves-effect waves-light btn-light">Create Event</button>
+                  <button className="btn-flat waves-effect waves-light btn-light"><Link to ="/create">Create Event</Link></button>
+                </li>
+                 <li className="nav-item">
+                  <button className="btn-flat waves-effect waves-light btn-light">
+                    <LogoutLink />
+                  </button>
+                </li>
+                </Authenticated>
+                <NotAuthenticated>
+                <li className="nav-item">
+                  <button className="btn-flat waves-effect waves-light btn-light">
+                    <a href="/login"> Sign In </a>
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <button className="btn-flat waves-effect waves-light btn-light">Sign In</button>
+                  <button className="btn-flat waves-effect waves-light btn-light">
+                    <a href="/register"> Sign Up </a>
+                  </button>
                 </li>
-                <li className="nav-item">
-                  <button className="btn-flat waves-effect waves-light btn-light">Sign Up</button>
-                </li>
+                </NotAuthenticated>
               </ul>
             </div>
           </div>
