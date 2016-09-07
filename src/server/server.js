@@ -11,7 +11,21 @@ var db =  process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost/PartyParrot';
 mongoose.connect(db);
 
 var app = express();
-require('./middleware/middleware')(app, express);
+
+ app.use(stormpath.init(app, {
+    application:{
+      href: 'https://api.stormpath.com/v1/applications/38BYzfpt1mubNI49Sj9nC4'
+    },
+    website: true
+    // web: {
+    //   spa: {
+    //     enabled: true,
+    //     view: path.join(__dirname, '/../../public', 'index.html')
+    //   }
+    // }
+  }));
+
+// require('./middleware/middleware')(app, express);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
 
