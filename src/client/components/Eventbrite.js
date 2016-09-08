@@ -11,7 +11,10 @@ class Home extends React.Component {
 
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      clicked: false
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount(){
