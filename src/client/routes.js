@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './components/App';
-import EventBrite from './components/Eventbrite';
+import CreateEvent from './components/CreateEvent';
 import Index from './components/Index';
 import { Route, IndexRoute } from 'react-router';
 import { LogoutRoute, AuthenticatedRoute } from 'react-stormpath';
@@ -10,7 +10,7 @@ export default (
     <IndexRoute component={Index} />
     <AuthenticatedRoute>
       <LogoutRoute path="/logout" />
-      <Route path ="/create" component={EventBrite} />
+      <Route path ="/create" component={CreateEvent} />
     </AuthenticatedRoute>
   </Route>
 );
