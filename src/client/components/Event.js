@@ -1,11 +1,14 @@
 import React from 'react';
+import EventForm from './EventForm';
 
-class Event extends React.Component {
+export default class Event extends React.Component {
   constructor() {
+    super();
     this.state = { data: [] }
   }
 
-  handleEventSubmit(event) {newEvents
+  handleEventSubmit(event) {
+    console.log('inside handleEventSubmit');
     var events = this.state.data;
     var newEvents = events.concat([event]);
     this.setState({data: newEvents});
@@ -25,8 +28,19 @@ class Event extends React.Component {
 
   render() {
     return <div className="event">
-    <h1>Event
-    <EventForm onEventSubmit={this.handleEventSubmit.bind(this)}/>
+      <h1>Best Event Ever!!!</h1>
+      <EventForm onEventSubmit={this.handleEventSubmit.bind(this)}/>
     </div>
   }
 }
+
+
+
+
+//   render() {
+//     return (<div className="event">
+//     <h1>Event</h1>
+//     <EventForm onEventSubmit={this.handleEventSubmit.bind(this)}/>
+//     </div>)
+//   }
+// }

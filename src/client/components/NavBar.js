@@ -20,6 +20,9 @@ export default class NavBar extends React.Component {
                 <li className="nav-item">
                   <button className="btn-flat waves-effect waves-light btn-light"><Link to ="/create">Create Event</Link></button>
                 </li>
+                <li className="nav-item">
+                  <button className="btn-flat waves-effect waves-light btn-light"><Link to ="/tempPost">Temp Post</Link></button>
+                </li>
                  <li className="nav-item">
                   <button className="btn-flat waves-effect waves-light btn-light">
                     <LogoutLink />
