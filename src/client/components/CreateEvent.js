@@ -52,7 +52,7 @@ export default class CreateEvent extends React.Component {
             <div className="col-xs-12">
               <hr />
               <h2 className="h2-responsive">Select Your Event</h2>
-              <input className="inputId" style={{ 'width':'95%' }} placeholder="Selected Event..." value={this.state.selectedEvent.name ? this.state.selectedEvent.name.html : ""} readonly="true" />
+              <input className="inputId" style={{ 'width':'95%' }} placeholder="Selected Event..." value={this.state.selectedEvent.name ? this.state.selectedEvent.name.html : ""} readonly="true" ref="eventName"/>
               <div className="scrollBox margin-top text-xs-left">
                 <ul>
                   {events}
@@ -64,26 +64,38 @@ export default class CreateEvent extends React.Component {
               <h2 className="h2-responsive">Prizes</h2>
 
               <img style={{ "width":"90px", 'border-right':'1px solid rgba(0,0,0,.1)', 'padding':'20px' }} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png" alt="" />
-              <input className="inputEventInfo" placeholder="Points to earn.." style={{ 'margin':"25px" }} />
-              <input className="inputEventInfo" placeholder="Reward..." style={{ 'marginTop':"25px" }} />
+              <input className="inputEventInfo" placeholder="Points to earn.." style={{ 'margin':"25px" }} ref ={ (input) => this.gPoint = input } />
+              <input className="inputEventInfo" placeholder="Reward..." style={{ 'marginTop':"25px" }} ref ={ (input) => this.gReward = input }/>
               <div />
               <img style={{ "width":"90px", 'border-right':'1px solid rgba(0,0,0,.1)', 'padding':'20px' }} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png" alt="" />
-              <input className="inputEventInfo" placeholder="Points to earn.." style={{ 'margin':"25px" }} />
-              <input className="inputEventInfo" placeholder="Reward..." style={{ 'marginTop':"25px" }} />
+              <input className="inputEventInfo" placeholder="Points to earn.." style={{ 'margin':"25px" }} ref ={ (input) => this.sPoint = input }/>
+              <input className="inputEventInfo" placeholder="Reward..." style={{ 'marginTop':"25px" }} ref ={ (input) => this.sReward = input }/>
               <div />
               <img style={{ "width":"90px", 'border-right':'1px solid rgba(0,0,0,.1)', 'padding':'20px' }} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png" alt="" />
-              <input className="inputEventInfo" placeholder="Points to earn.." style={{ 'margin':"25px" }} />
-              <input className="inputEventInfo" placeholder="Reward..." style={{ 'marginTop':"25px" }} />
+              <input className="inputEventInfo" placeholder="Points to earn.." style={{ 'margin':"25px" }} ref ={ (input) => this.bPoint = input }/>
+              <input className="inputEventInfo" placeholder="Reward..." style={{ 'marginTop':"25px" }} ref ={ (input) => this.bReward = input }/>
             </div>
             <div className="col-xs-12">
               <hr />
               <h2 className="h2-responsive">Post your Event</h2>
-              <button className="btn btn-lg btn-default waves-effect waves-light">Submit</button>
+              <button className="btn btn-lg btn-default waves-effect waves-light" onClick={() => this.handleSubmit({
+                gPoint: this.gPoint.value,
+                gReward: this.gReward.value,
+                sPoint: this.sPoint.value,
+                sReward: this.sReward.value,
+                bPoint: this.bPoint.value,
+                bReward: this.bReward.value,
+                event: this.state.selectedEvent
+              })}>Submit</button>
             </div>
           </div>
         </div>
       </div>
     )
+  }
+
+  handleSubmit(eventObj) {
+    console.log(eventObj);
   }
 
   search(query, city){
