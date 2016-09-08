@@ -6,5 +6,3 @@ node_modules/
 .floobit
 .floo
 .flooignore
-
-public/bundle.js
