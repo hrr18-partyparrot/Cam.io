@@ -36,8 +36,9 @@ app.post('/create',stormpath.loginRequired, function(req,res){
   sPoint: req.body.sPoint,
   sReward: req.body.gReward,
   bPoint: req.body.bPoint,
-  bReward: req.body.gReward
-  })
+  bReward: req.body.gReward,
+  eventbrite: req.body.event
+  });
   event.save(function (err, post) {
     if (err) {console.error(err)}
     res.status(201).json('Hey I posted ' + post);

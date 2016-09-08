@@ -10,6 +10,7 @@ var eventSchema = new mongoose.Schema({
   sReward: String,
   bPoint: String,
   bReward: String,
+  eventbrite: {},
   created_at: {type:Date, default: Date.now}
 });
 module.exports = mongoose.model("Event", eventSchema);
