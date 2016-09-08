@@ -1,8 +1,8 @@
 "use strict";
 
-import React                    from 'react';
-import Request                  from 'superagent';
-import _                        from 'lodash';
+import React from 'react';
+import Request from 'superagent';
+import _ from 'lodash';
 
 // Component lifecycle docs:
 // https://facebook.github.io/react/docs/component-specs.html
@@ -11,7 +11,10 @@ class Home extends React.Component {
 
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      clicked: false
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount(){
@@ -41,12 +44,19 @@ class Home extends React.Component {
 
   render(){
     var events = _.map(this.state.events, (event) => {
-      return <li>{event.name.text}</li>;
+      return <li className='list-group-item'>{event.name.text}</li>
+
     });
-    return <div>
-      <input ref="query" onChange={ (e) => { this.updateSearch(); } } type="text" />
-      <ul>{events}</ul>
-    </div>;
+    return <div className='container'>
+      <ul className='list-group'>{events}</ul>
+      <div className="search-bar form-inline">
+        <input
+          className="form-control"
+          type="text"
+          onChange={ (e) => { this.updateSearch(); } }
+        />
+        </div>
+    </div>
   }
 
   search(query = "music"){
