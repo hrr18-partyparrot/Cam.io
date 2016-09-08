@@ -48540,18 +48540,48 @@
 	      );
 	    }
 	  }, {
+	    key: 'clearForm',
+	    value: function clearForm() {
+	      this.gPoint.value = "";
+	      this.gReward.value = "";
+	      this.sPoint.value = "";
+	      this.sReward.value = "";
+	      this.bPoint.value = "";
+	      this.bReward.value = "";
+	      this.state.selectedEvent = {};
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(eventObj) {
+	      var _this3 = this;
+
 	      console.log(eventObj);
+	      $.ajax({
+	        url: this.props.url,
+	        contentType: 'application/json',
+	        type: 'POST',
+	        data: JSON.stringify(eventObj),
+	        success: function success(data) {
+	          _this3.setState({ data: data });
+	          console.log('data from handleEvent: ', data);
+	          _this3.clearForm();
+	          console.log('event after clear: ', eventObj);
+	        },
+	        error: function error(xhr, status, err) {
+	          console.error(_this3.props.url, status, err.toString());
+	          _this3.clearForm();
+	          console.log('event after clear: ', eventObj);
+	        }
+	      });
 	    }
 	  }, {
 	    key: 'search',
 	    value: function search(query, city) {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var url = 'https://www.eventbriteapi.com/v3/events/search/?q=' + query + '&sort_by=best&location.address=' + city + '&token=YZO3HZ5MJZYKY6QU64H2';
 	      _superagent2.default.get(url).then(function (response) {
-	        _this3.setState({
+	        _this4.setState({
 	          events: response.body.events
 	        });
 	      });
@@ -48559,11 +48589,11 @@
 	  }, {
 	    key: 'searchId',
 	    value: function searchId(id) {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var url = 'https://www.eventbriteapi.com/v3/events/search/?q=' + query + '&sort_by=best&location.address=' + city + '&token=YZO3HZ5MJZYKY6QU64H2';
 	      _superagent2.default.get(url).then(function (response) {
-	        _this4.setState({
+	        _this5.setState({
 	          events: response.body.events
 	        });
 	      });

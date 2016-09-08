@@ -94,8 +94,36 @@ export default class CreateEvent extends React.Component {
     )
   }
 
+  clearForm() {
+    this.gPoint.value = "";
+    this.gReward.value = "";
+    this.sPoint.value = "";
+    this.sReward.value = "";
+    this.bPoint.value = "";
+    this.bReward.value = "";
+    this.state.selectedEvent = {};
+  }
+
   handleSubmit(eventObj) {
     console.log(eventObj);
+    $.ajax({
+      url: this.props.url,
+      contentType: 'application/json',
+      type: 'POST',
+      data: JSON.stringify(eventObj),
+      success: (data) => {
+        this.setState({data: data});
+        console.log('data from handleEvent: ', data);
+        this.clearForm();
+        console.log('event after clear: ', eventObj);
+      },
+      error: (xhr, status, err) => {
+        console.error(this.props.url, status, err.toString());
+        this.clearForm();
+        console.log('event after clear: ', eventObj);
+      }
+    });
+
   }
 
   search(query, city){
