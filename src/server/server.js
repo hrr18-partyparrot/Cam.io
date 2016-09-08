@@ -24,6 +24,7 @@ app.use(stormpath.init(app, {
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
 var Event = require('./models/event');
+
 app.post('/create',stormpath.loginRequired, function(req,res){
   var event = new Event({
   name: req.body.event.name.text,
@@ -39,21 +40,32 @@ app.post('/create',stormpath.loginRequired, function(req,res){
   })
   event.save(function (err, post) {
     if (err) {console.error(err)}
-    res.json(201,'Hey I posted ' + post);
+    res.status(201).json('Hey I posted ' + post);
   });
 });
+
 app.get('/events', function (req, res, next) {
   Event.find(function(err, events) {
     if (err) { console.error(err) }
     res.json(events);
   })
 })
+
+app.get('/userEvents', stormpath.loginRequired, function(req,res) {
+  Event.find({'owner': req.user.username}, function(err, event) {
+    if (err) console.error(err);
+    res.json(event);
+  })
+})
+
 app.get('/secrets', stormpath.loginRequired, function(req,res){
   res.send('Hi ' + req.user.givenName);
 })
+
 app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
+
 app.get('/authentication', function(req, res){
   var authUrl = client.getOAuthUrl();
   res.redirect(authUrl);
@@ -70,4 +82,5 @@ app.get('/authentication', function(req, res){
 app.on('stormpath.ready', function() {
   app.listen(PORT);
 });
+
 module.exports = app;

@@ -48477,7 +48477,7 @@
 	                { className: 'h2-responsive' },
 	                'Select Your Event'
 	              ),
-	              _react2.default.createElement('input', { className: 'inputId', style: { 'width': '95%' }, placeholder: 'Selected Event...', value: this.state.selectedEvent.name ? this.state.selectedEvent.name.html : "", readonly: 'true' }),
+	              _react2.default.createElement('input', { className: 'inputId', style: { 'width': '95%' }, placeholder: 'Selected Event...', value: this.state.selectedEvent.name ? this.state.selectedEvent.name.html : "", readonly: 'true', ref: 'eventName' }),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'scrollBox margin-top text-xs-left' },
@@ -48498,16 +48498,28 @@
 	                'Prizes'
 	              ),
 	              _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png', alt: '' }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" } }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" } }),
+	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
+	                  return _this2.gPoint = input;
+	                } }),
+	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
+	                  return _this2.gReward = input;
+	                } }),
 	              _react2.default.createElement('div', null),
 	              _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png', alt: '' }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" } }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" } }),
+	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
+	                  return _this2.sPoint = input;
+	                } }),
+	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
+	                  return _this2.sReward = input;
+	                } }),
 	              _react2.default.createElement('div', null),
 	              _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png', alt: '' }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" } }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" } })
+	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
+	                  return _this2.bPoint = input;
+	                } }),
+	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
+	                  return _this2.bReward = input;
+	                } })
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -48520,7 +48532,17 @@
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { className: 'btn btn-lg btn-default waves-effect waves-light' },
+	                { className: 'btn btn-lg btn-default waves-effect waves-light', onClick: function onClick() {
+	                    return _this2.handleSubmit({
+	                      gPoint: _this2.gPoint.value,
+	                      gReward: _this2.gReward.value,
+	                      sPoint: _this2.sPoint.value,
+	                      sReward: _this2.sReward.value,
+	                      bPoint: _this2.bPoint.value,
+	                      bReward: _this2.bReward.value,
+	                      event: _this2.state.selectedEvent
+	                    });
+	                  } },
 	                'Submit'
 	              )
 	            )
@@ -48529,13 +48551,48 @@
 	      );
 	    }
 	  }, {
+	    key: 'clearForm',
+	    value: function clearForm() {
+	      this.gPoint.value = "";
+	      this.gReward.value = "";
+	      this.sPoint.value = "";
+	      this.sReward.value = "";
+	      this.bPoint.value = "";
+	      this.bReward.value = "";
+	      this.state.selectedEvent = {};
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(eventObj) {
+	      var _this3 = this;
+
+	      console.log(eventObj);
+	      $.ajax({
+	        url: this.props.url,
+	        contentType: 'application/json',
+	        type: 'POST',
+	        data: JSON.stringify(eventObj),
+	        success: function success(data) {
+	          _this3.setState({ data: data });
+	          console.log('data from handleEvent: ', data);
+	          _this3.clearForm();
+	          console.log('event after clear: ', eventObj);
+	        },
+	        error: function error(xhr, status, err) {
+	          console.error(_this3.props.url, status, err.toString());
+	          _this3.clearForm();
+	          console.log('event after clear: ', eventObj);
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'search',
 	    value: function search(query, city) {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var url = 'https://www.eventbriteapi.com/v3/events/search/?q=' + query + '&sort_by=best&location.address=' + city + '&token=YZO3HZ5MJZYKY6QU64H2';
 	      _superagent2.default.get(url).then(function (response) {
-	        _this3.setState({
+	        _this4.setState({
 	          events: response.body.events
 	        });
 	      });
@@ -48543,11 +48600,11 @@
 	  }, {
 	    key: 'searchId',
 	    value: function searchId(id) {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var url = 'https://www.eventbriteapi.com/v3/events/' + id + '/?token=YZO3HZ5MJZYKY6QU64H2';
 	      _superagent2.default.get(url).then(function (response) {
-	        _this4.setState({
+	        _this5.setState({
 	          events: response.body.events
 	        });
 	      });
