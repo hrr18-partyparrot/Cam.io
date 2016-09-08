@@ -107,7 +107,7 @@ export default class CreateEvent extends React.Component {
   handleSubmit(eventObj) {
     console.log(eventObj);
     $.ajax({
-      url: this.props.url,
+      url: '/create',
       contentType: 'application/json',
       type: 'POST',
       data: JSON.stringify(eventObj),
