@@ -19,6 +19,7 @@ app.use(stormpath.init(app, {
   },
   website: true
 }));
+
 // require('./middleware/middleware')(app, express);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
