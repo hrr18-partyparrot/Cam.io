@@ -1,16 +1,16 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
-import Logo from './components/Logo';
+import EventBrite from './components/Eventbrite';
 import Index from './components/Index';
-import ReactStormpath, { Router, HomeRoute, LogoutRoute, AuthenticatedRoute } from 'react-stormpath';
+import { Route, IndexRoute } from 'react-router';
+import { LogoutRoute, AuthenticatedRoute } from 'react-stormpath';
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Index} />
     <AuthenticatedRoute>
       <LogoutRoute path="/logout" />
-      <Route path ="/create" component={Logo} />
+      <Route path ="/create" component={EventBrite} />
     </AuthenticatedRoute>
   </Route>
 );

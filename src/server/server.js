@@ -16,24 +16,18 @@ mongoose.connect(db);
 
 var app = express();
 
- app.use(stormpath.init(app, {
-    application:{
-      href: 'https://api.stormpath.com/v1/applications/38BYzfpt1mubNI49Sj9nC4'
-    },
-    website: true
-    // web: {
-    //   spa: {
-    //     enabled: true,
-    //     view: path.join(__dirname, '/../../public', 'index.html')
-    //   }
-    // }
-  }));
+app.use(stormpath.init(app, {
+  application:{
+    href: 'https://api.stormpath.com/v1/applications/38BYzfpt1mubNI49Sj9nC4'
+  },
+  website: true
+}));
 
 // require('./middleware/middleware')(app, express);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
 
-app.get('/secrets',stormpath.loginRequired,function(req,res){
+app.get('/secrets', stormpath.loginRequired, function(req,res){
   res.send('Hi ' + req.user.givenName);
 })
 
@@ -43,14 +37,14 @@ app.get('*', function (req, res) {
 
 app.get('/authentication', function(req, res){
   var authUrl = client.getOAuthUrl();
-    res.redirect(authUrl);
-client.authorize(req.query.code, function(err, response) {
-        if(err) {
-            console.log.error(err);
-            return;
-        }
-        console.log(response.access_token);
-    });
+  res.redirect(authUrl);
+  client.authorize(req.query.code, function(err, response) {
+    if (err) {
+      console.log.error(err);
+      return;
+    }
+    console.log(response.access_token);
+  });
 });
 
 app.on('stormpath.ready', function() {
