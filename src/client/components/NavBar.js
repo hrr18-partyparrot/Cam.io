@@ -16,6 +16,9 @@ export default class NavBar extends React.Component {
                 <img src="img/Logo.svg" style={{"width":"50px"}} />
               </a>
               <ul className="nav navbar-nav pull-right" style={{"marginTop":"3px"}}>
+                <li className="nav-item">
+                  <button className="btn-flat waves-effect waves-light btn-light"><Link to ="/">Home</Link></button>
+                </li>
                 <Authenticated>
                 <li className="nav-item">
                   <button className="btn-flat waves-effect waves-light btn-light"><Link to ="/create">Create Event</Link></button>
