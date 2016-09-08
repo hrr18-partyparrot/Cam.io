@@ -9,16 +9,18 @@ export default class Event extends React.Component {
 
   handleEventSubmit(event) {
     console.log('inside handleEventSubmit');
+    console.log('event: ', event);
     var events = this.state.data;
     var newEvents = events.concat([event]);
     this.setState({data: newEvents});
     $.ajax({
       url: this.props.url,
-      dataType: 'json',
+      contentType: 'application/json',
       type: 'POST',
-      data: event,
+      data: JSON.stringify(event),
       success: (data) => {
         this.setState({data: data});
+        console.log('data from handleEvent: ', data);
       },
       error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());

@@ -29,7 +29,13 @@ app.use(express.static(__dirname + '/../public'));
 
 app.get('/secrets', stormpath.loginRequired, function(req,res){
   res.send('Hi ' + req.user.givenName);
-})
+});
+
+app.post('/tempPost', stormpath.loginRequired, function(req,res) {
+  console.log('inside tempPost on server side: ', req.user);
+  console.log('req.body: __________________ ', req.body);
+  res.send('Hi I got your tempPost');
+});
 
 app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, '/../public/index.html'));

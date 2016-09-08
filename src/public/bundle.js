@@ -48935,16 +48935,18 @@
 	      var _this2 = this;
 
 	      console.log('inside handleEventSubmit');
+	      console.log('event: ', event);
 	      var events = this.state.data;
 	      var newEvents = events.concat([event]);
 	      this.setState({ data: newEvents });
 	      $.ajax({
 	        url: this.props.url,
-	        dataType: 'json',
+	        contentType: 'application/json',
 	        type: 'POST',
-	        data: event,
+	        data: JSON.stringify(event),
 	        success: function success(data) {
 	          _this2.setState({ data: data });
+	          console.log('data from handleEvent: ', data);
 	        },
 	        error: function error(xhr, status, err) {
 	          console.error(_this2.props.url, status, err.toString());
