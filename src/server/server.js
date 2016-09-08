@@ -19,6 +19,7 @@ app.use(stormpath.init(app, {
   },
   website: true
 }));
+
 // require('./middleware/middleware')(app, express);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
@@ -64,6 +65,8 @@ app.get('/authentication', function(req, res){
     console.log(response.access_token);
   });
 });
+
+//test abc 123
 app.on('stormpath.ready', function() {
   app.listen(PORT);
 });
