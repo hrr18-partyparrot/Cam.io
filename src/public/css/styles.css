@@ -68,6 +68,31 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
 }
 
+.inputId {
+  width:80%;
+}
+
+.searchBtn {
+  width:58px;
+  height:58px;
+  border:none;
+}
+
+.inputId,
+.inputEventInfo {
+  outline:none;
+  padding:10px;
+  border:4px #ddd solid;
+  color:#999;
+  font-size:20px;
+  vertical-align:top
+}
+
+.scrollBox {
+  overflow:auto;
+  height:300px
+}
+
 footer.page-footer {
   background-color: #666;
 }
