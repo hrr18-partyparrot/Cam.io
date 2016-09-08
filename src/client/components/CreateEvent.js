@@ -136,7 +136,7 @@ export default class CreateEvent extends React.Component {
   }
 
   searchId(id){
-    var url = `https://www.eventbriteapi.com/v3/events/search/?q=${query}&sort_by=best&location.address=${city}&token=YZO3HZ5MJZYKY6QU64H2`;
+    var url = `https://www.eventbriteapi.com/v3/events/${id}/?token=YZO3HZ5MJZYKY6QU64H2`;
     Request.get(url).then((response) => {
       this.setState({
         events: response.body.events
