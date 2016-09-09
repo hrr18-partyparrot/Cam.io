@@ -8,7 +8,7 @@ export default class CategoryList extends React.Component {
       <div className='category-list'>
         <div className="wide">
           <div className="row">
-            {this.props.categoryList.map(category => <Category category={category} /> )}
+            {this.props.categoryList.map(category => <Category key={category.id} category={category} /> )}
           </div>
         </div>
       </div>

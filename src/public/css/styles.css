@@ -1,5 +1,6 @@
-bhtml,
+html,
 body {
+  padding: 0px !important;
   height: 100%;
   background-color: #f9f9f9
 }

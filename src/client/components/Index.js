@@ -8,36 +8,32 @@ export default class App extends React.Component {
     //id maps to an id in the db.
     this.categoryList = [
       {
-        id:["103"],
+        id: 1,
         title: 'Nightlife',
         imgUrl: './img/causeway-miami-skyline-612x338.jpg'
       },
-
       {
-        id:["109", "119"],
+        id: 2,
         title: 'Outdoors',
         imgUrl: './img/causeway-miami-skyline-612x338.jpg'
       },
-
-      { id: ["110"],
+      {
+        id: 3,
         title: 'Food',
         imgUrl: './img/causeway-miami-skyline-612x338.jpg'
       },
-
       {
-        id: ['101'],
+        id: 4,
         title: 'Networking',
         imgUrl: './img/causeway-miami-skyline-612x338.jpg'
       },
-
       {
-        id: ["199"],
+        id: 5,
         title: 'Festivals',
         imgUrl: './img/causeway-miami-skyline-612x338.jpg'
       },
-
       {
-        id: ['111'],
+        id: 6,
         title: 'Music',
         imgUrl: './img/causeway-miami-skyline-612x338.jpg'
       }
