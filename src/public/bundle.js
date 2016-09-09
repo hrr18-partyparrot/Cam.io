@@ -35075,7 +35075,15 @@
 
 	var _Event2 = _interopRequireDefault(_Event);
 
+<<<<<<< HEAD
 	var _Index = __webpack_require__(547);
+=======
+	var _UserDetails = __webpack_require__(547);
+
+	var _UserDetails2 = _interopRequireDefault(_UserDetails);
+
+	var _Index = __webpack_require__(548);
+>>>>>>> Minor testing on event details
 
 	var _Index2 = _interopRequireDefault(_Index);
 
@@ -48386,6 +48394,19 @@
 	        );
 	      });
 
+<<<<<<< HEAD
+=======
+	      // var event = this.state.event.map(eventEntry => {
+	      //     return (
+	      //       <li style={{"marginTop":"20px"}} onClick={ () => this.selectEvent(eventEntry) }>
+	      //         <img src={eventEntry === logo ? eventEntry.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "border-radius":'5px'}} alt="" />
+	      //         <a>{eventEntry === name ? eventEntry.html : " "}</a>
+	      //       </li>
+	      //     )
+	      // });
+
+
+>>>>>>> Minor testing on event details
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'create-event' },
@@ -48573,7 +48594,7 @@
 
 	      console.log(eventObj);
 	      $.ajax({
-	        url: this.props.url,
+	        url: '/create',
 	        contentType: 'application/json',
 	        type: 'POST',
 	        data: JSON.stringify(eventObj),
@@ -48610,7 +48631,11 @@
 	      var url = 'https://www.eventbriteapi.com/v3/events/' + id + '/?token=YZO3HZ5MJZYKY6QU64H2';
 	      _superagent2.default.get(url).then(function (response) {
 	        _this5.setState({
+<<<<<<< HEAD
 	          events: response.body.events
+=======
+	          event: response.body
+>>>>>>> Minor testing on event details
 	        });
 	      });
 	    }
@@ -67411,6 +67436,201 @@
 /* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var UserDetails = function (_React$Component) {
+	  _inherits(UserDetails, _React$Component);
+
+	  function UserDetails() {
+	    _classCallCheck(this, UserDetails);
+
+	    return _possibleConstructorReturn(this, (UserDetails.__proto__ || Object.getPrototypeOf(UserDetails)).call(this));
+	  }
+
+	  _createClass(UserDetails, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "wide" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row margin-top" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-5" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "author-box" },
+	              _react2.default.createElement(
+	                "div",
+	                { className: "row" },
+	                _react2.default.createElement(
+	                  "h3",
+	                  { className: "h3-responsive text-xs-center" },
+	                  "About Event Organizer"
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-xs-12", style: { "text-align": "center" } },
+	                  _react2.default.createElement("img", { src: "http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g", alt: "", className: " img-circle z-depth-2", style: { "max-width": "200px" } })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-xs-12" },
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "text-xs-center margin-top" },
+	                    _react2.default.createElement(
+	                      "strong",
+	                      null,
+	                      "COACHELLA"
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "Stare at the wall, play with food and get confused by dust. Lounge in doorway cats secretly make all the worlds muffins but hide from vacuum cleaner so intently sniff hand bathe private parts with tongue then lick owner's face jump off balcony, onto stranger's head. If it smells like fish eat as much as you wish where is my slave? I'm getting hungry walk on car leaving trail of paw prints on hood and windshield so leave hair everywhere, but curl into a furry donut so lick butt. "
+	                  ),
+	                  _react2.default.createElement(
+	                    "p",
+	                    { className: "hidden-md-down" },
+	                    "Jump off balcony, onto stranger's head knock over christmas tree or lick plastic bags. Get video posted to internet for chasing red dot drink water out of the faucet. Sleep nap play time has closed eyes but still sees you chase dog then run away. Caticus cuteicus has closed eyes but still sees you and human give me attention meow, slap owner's face at 5am until human fills food dish yet sun bathe pee in the shoe. Burrow under covers slap owner's face at 5am until human fills food dish, immediately regret falling into bathtub and unwrap toilet paper so dream about hunting birds and leave fur on owners clothes so scratch the furniture. "
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-7" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "card card-block" },
+	              _react2.default.createElement(
+	                "h4",
+	                { className: "card-title" },
+	                "Events"
+	              ),
+	              _react2.default.createElement("hr", null),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "row" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-xs-3 col-md-2" },
+	                  _react2.default.createElement("img", { src: "http://lorempixel.com/400/400/nightlife", alt: "" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-md-7", style: { "margin-top": "20px" } },
+	                  _react2.default.createElement(
+	                    "h2",
+	                    { className: "h2-responsive" },
+	                    "Cat ipsum dolor sit amet, run outside as soon as door open so destroy the blinds or chirp at birds use lap as chair. Eat and than sleep on your face kitty loves pigs. Throwup on your pillow. Ignore the squirrels, you'll never catch them anyway kitty scratches couch bad kitty mark territory cats secretly make all the worlds muffins, kitty scratches couch bad kitty. Who's the baby. Have secret plans. Poop in the plant pot chase after silly colored fish toys around the house dream about hunting birds cat snacks stick butt in face."
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-md-1", style: { "margin-top": "20px" } },
+	                  _react2.default.createElement(
+	                    "h4",
+	                    { className: "h4-responsive" },
+	                    "20 points"
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement("hr", null),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "row" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-xs-3 col-md-2" },
+	                  _react2.default.createElement("img", { src: "http://lorempixel.com/400/400/nightlife", alt: "" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-md-6", style: { "margin-top": "20px" } },
+	                  _react2.default.createElement(
+	                    "h2",
+	                    { className: "h2-responsive" },
+	                    "All of a sudden cat goes crazy need to chase tail, for sit on the laptop stare at wall turn and meow stare at wall some more meow again continue staring , scratch leg; meow for can opener to feed me. Claw drapes. Poop in litter box, scratch the walls you call this cat food? or get video posted to internet for chasing red dot but curl up and sleep on the freshly laundered towels climb a tree, wait for a fireman jump to fireman then scratch his face for soft kitty warm kitty little ball of furr make muffins. R"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-md-2", style: { "margin-top": "20px" } },
+	                  _react2.default.createElement(
+	                    "h4",
+	                    { className: "h4-responsive" },
+	                    "50 points"
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement("hr", null),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "row" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-xs-3 col-md-2" },
+	                  _react2.default.createElement("img", { src: "http://lorempixel.com/400/400/nightlife", alt: "" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-md-7", style: { "margin-top": "20px" } },
+	                  _react2.default.createElement(
+	                    "h2",
+	                    { className: "h2-responsive" },
+	                    "event description"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "col-md-1", style: { "margin-top": "20px" } },
+	                  _react2.default.createElement(
+	                    "h4",
+	                    { className: "h4-responsive" },
+	                    "1 Ticket Free"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return UserDetails;
+	}(_react2.default.Component);
+
+	exports.default = UserDetails;
+
+/***/ },
+/* 548 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -67423,11 +67643,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CategoryList = __webpack_require__(548);
+	var _CategoryList = __webpack_require__(549);
 
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 
-	var _Logo = __webpack_require__(550);
+	var _Logo = __webpack_require__(551);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
@@ -67445,9 +67665,11 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
+	    //id maps to an id in the db.
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	    _this.categoryList = [{
+<<<<<<< HEAD
 	      id: 1,
 	      title: 'Nightlife',
 	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
@@ -67469,6 +67691,28 @@
 	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
 	    }, {
 	      id: 6,
+=======
+	      id: ["103"],
+	      title: 'Nightlife',
+	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	    }, {
+	      id: ["109", "119"],
+	      title: 'Outdoors',
+	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	    }, { id: ["110"],
+	      title: 'Food',
+	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	    }, {
+	      id: ['101'],
+	      title: 'Networking',
+	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	    }, {
+	      id: ["199"],
+	      title: 'Festivals',
+	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	    }, {
+	      id: ['111'],
+>>>>>>> Minor testing on event details
 	      title: 'Music',
 	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
 	    }];
@@ -67493,7 +67737,7 @@
 	exports.default = App;
 
 /***/ },
-/* 548 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67508,7 +67752,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Category = __webpack_require__(549);
+	var _Category = __webpack_require__(550);
 
 	var _Category2 = _interopRequireDefault(_Category);
 
@@ -67557,7 +67801,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 549 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67695,7 +67939,7 @@
 	exports.default = Category;
 
 /***/ },
-/* 550 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
