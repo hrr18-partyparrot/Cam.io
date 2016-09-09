@@ -12,11 +12,27 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
-        command: 'git push heroku master'
+        command: 'git push heroku master',
+        options: {
+          stdout: true,
+          stderr: true,
+          failOnError: true
+        }
       }
     },
   });
 
+  grunt.registerTask('server-dev', function (target) {
+    // Running nodejs in a different process and displaying output on the main console
+    var nodemon = grunt.util.spawn({
+         cmd: 'grunt',
+         grunt: true,
+         args: 'nodemon'
+    });
+    nodemon.stdout.pipe(process.stdout);
+    nodemon.stderr.pipe(process.stderr);
+
+  });
 
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
@@ -25,16 +41,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['nodemon:dev']);
 
-    nodemon.stdout.pipe(process.stdout);
-    nodemon.stderr.pipe(process.stderr);
-
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
-      // add your production server task here
+      var nodemon
       grunt.task.run(['shell:prodServer'])
     } else {
-      grunt.task.run([ 'default' ]);
+      grunt.task.run([ 'server-dev' ]);
     }
   });
 
