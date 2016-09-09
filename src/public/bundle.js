@@ -35065,15 +35065,15 @@
 
 	var _CreateEvent2 = _interopRequireDefault(_CreateEvent);
 
-	var _EventDetails = __webpack_require__(552);
+	var _EventDetails = __webpack_require__(544);
 
 	var _EventDetails2 = _interopRequireDefault(_EventDetails);
 
-	var _UserDetails = __webpack_require__(547);
+	var _UserDetails = __webpack_require__(545);
 
 	var _UserDetails2 = _interopRequireDefault(_UserDetails);
 
-	var _Index = __webpack_require__(548);
+	var _Index = __webpack_require__(546);
 
 	var _Index2 = _interopRequireDefault(_Index);
 
@@ -35135,19 +35135,90 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+	    _this.state = {
+	      events: [],
+	      categories: [],
+	      selectedEvent: {}
+	    };
+	    return _this;
 	  }
 
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var childrenWithProps = _react2.default.Children.map(this.props.children, function (child) {
+	        return _react2.default.cloneElement(child, {
+	          getEvents: _this2.getEvents.bind(_this2),
+	          categories: _this2.state.categories,
+	          event: _this2.state.selectedEvent,
+	          handler: _this2.handler.bind(_this2)
+	        });
+	      });
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'app' },
 	        _react2.default.createElement(_Navbar2.default, null),
-	        this.props.children,
+	        childrenWithProps,
 	        _react2.default.createElement(_Footer2.default, null)
 	      );
+	    }
+	  }, {
+	    key: 'getEvents',
+	    value: function getEvents() {
+	      $.ajax({
+	        url: '/events',
+	        type: 'GET',
+	        success: function (events) {
+	          this.setState({
+	            events: events
+	          });
+	          this.createCategoryList();
+	        }.bind(this)
+	      });
+	    }
+	  }, {
+	    key: 'createCategoryList',
+	    value: function createCategoryList() {
+	      var _this3 = this;
+
+	      var categories = [];
+	      var done = [];
+	      this.state.events.map(function (event) {
+	        var category_id = event.eventbrite.category_id;
+	        if (category_id) {
+	          $.ajax({
+	            url: 'https://www.eventbriteapi.com/v3/categories/' + category_id + '/?token=YZO3HZ5MJZYKY6QU64H2',
+	            type: 'GET',
+	            success: function (category) {
+	              if (!done.includes(category.id)) {
+	                categories.push({
+	                  id: categories[categories.length - 1] ? categories[categories.length - 1].id + 1 : 1,
+	                  title: category.name,
+	                  categoryId: category.id,
+	                  imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	                });
+	                done.push(category.id);
+	                this.setState({
+	                  categories: categories
+	                });
+	              }
+	            }.bind(_this3)
+	          });
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'handler',
+	    value: function handler(event) {
+	      this.setState({
+	        selectedEvent: event
+	      });
+	      this.context.router.push('/EventDetails');
 	    }
 	  }]);
 
@@ -35155,6 +35226,11 @@
 	}(_react2.default.Component);
 
 	exports.default = App;
+
+
+	App.contextTypes = {
+	  router: _react2.default.PropTypes.object.isRequired
+	};
 
 /***/ },
 /* 534 */
@@ -48371,6 +48447,7 @@
 	    value: function render() {
 	      var _this2 = this;
 
+	      console.log(this.props);
 	      var events = this.state.events.map(function (eventEntry) {
 	        return _react2.default.createElement(
 	          'li',
@@ -50501,10 +50578,333 @@
 	exports.default = Event;
 
 /***/ },
-/* 544 */,
-/* 545 */,
-/* 546 */,
-/* 547 */
+/* 544 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EventDetails = function (_React$Component) {
+	  _inherits(EventDetails, _React$Component);
+
+	  function EventDetails() {
+	    _classCallCheck(this, EventDetails);
+
+	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this));
+	  }
+
+	  _createClass(EventDetails, [{
+	    key: 'render',
+	    value: function render() {
+	      $('.modal-backdrop').remove(); //Quickfix to remove the modal
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'view hm-black-light' },
+	          _react2.default.createElement('img', { className: 'img-fluid', style: { "width": "100%" }, src: this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : '', alt: '' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'mask flex-center' },
+	            _react2.default.createElement(
+	              'h1',
+	              { className: 'white-text h1-responsive' },
+	              this.props.event.name
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'wide' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row margin-top' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-md-7' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'card card-block' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Start Promoting Now!'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn btn-lg waves-effect waves-light', style: { "background-color": "#ff5a00" } },
+	                  'Promote with ',
+	                  _react2.default.createElement('img', { src: 'img/BitlyLogo.png', className: 'img-responsive img-fluid', style: { "width": "60px", "display": "inline" } })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'card card-block' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Decription'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'card-text' },
+	                  this.props.event.desc
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'card card-block' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Prizes'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-3 col-md-2' },
+	                    _react2.default.createElement('img', { style: { "width": "50px" }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png', alt: '' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-4', style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      'h2',
+	                      { className: 'h2-responsive' },
+	                      this.props.event.gPoint
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-6', style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      'h4',
+	                      { className: 'h4-responsive' },
+	                      this.props.event.gReward
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-2' },
+	                    _react2.default.createElement('img', { style: { "width": "50px" }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png', alt: '' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-4', style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      'h2',
+	                      { className: 'h2-responsive' },
+	                      this.props.event.sPoint
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-6', style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      'h4',
+	                      { className: 'h4-responsive' },
+	                      this.props.event.sReward
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-2' },
+	                    _react2.default.createElement('img', { style: { "width": "50px" }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png', alt: '' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-4', style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      'h2',
+	                      { className: 'h2-responsive' },
+	                      this.props.event.bPoint
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-md-6', style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      'h4',
+	                      { className: 'h4-responsive' },
+	                      this.props.event.bReward
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-md-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'card card-block' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Leaderboard'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'table-responsive' },
+	                  _react2.default.createElement(
+	                    'table',
+	                    { className: 'table table-hover' },
+	                    _react2.default.createElement(
+	                      'thead',
+	                      null,
+	                      _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                          'th',
+	                          null,
+	                          'Username'
+	                        ),
+	                        _react2.default.createElement(
+	                          'th',
+	                          null,
+	                          'Points'
+	                        )
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'tbody',
+	                      null,
+	                      _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          'John Doe'
+	                        ),
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          '780 Points'
+	                        )
+	                      ),
+	                      _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          'Jane Doe'
+	                        ),
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          '500 Points'
+	                        )
+	                      ),
+	                      _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          'Bob Doe'
+	                        ),
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          '330 Points'
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'author-box' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'row' },
+	                  _react2.default.createElement(
+	                    'h3',
+	                    { className: 'h3-responsive text-xs-center' },
+	                    'About Event Organizer'
+	                  ),
+	                  _react2.default.createElement('hr', null),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-12', style: { "text-align": "center" } },
+	                    _react2.default.createElement('img', { src: this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : '', alt: '', className: ' img-circle z-depth-2', style: { "max-width": "200px" } })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-12' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'text-xs-center margin-top' },
+	                      _react2.default.createElement(
+	                        'strong',
+	                        null,
+	                        'COACHELLA'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat itaque blanditiis natus, ratione.'
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'hidden-md-down' },
+	                      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae quas libero, esse facere.'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return EventDetails;
+	}(_react2.default.Component);
+
+	exports.default = EventDetails;
+
+/***/ },
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50699,7 +51099,7 @@
 	exports.default = UserDetails;
 
 /***/ },
-/* 548 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50714,11 +51114,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CategoryList = __webpack_require__(549);
+	var _CategoryList = __webpack_require__(547);
 
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 
-	var _Logo = __webpack_require__(551);
+	var _Logo = __webpack_require__(549);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
@@ -50736,35 +51136,7 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    //id maps to an id in the db.
-	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-	    _this.categoryList = [{
-	      id: 1,
-	      title: 'Nightlife',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: 2,
-	      title: 'Outdoors',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: 3,
-	      title: 'Food',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: 4,
-	      title: 'Networking',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: 5,
-	      title: 'Festivals',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: 6,
-	      title: 'Music',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }];
-	    return _this;
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 	  }
 
 	  _createClass(App, [{
@@ -50774,8 +51146,13 @@
 	        'div',
 	        { className: 'index' },
 	        _react2.default.createElement(_Logo2.default, null),
-	        _react2.default.createElement(_CategoryList2.default, { categoryList: this.categoryList })
+	        _react2.default.createElement(_CategoryList2.default, { categoryList: this.props.categories, handler: this.props.handler })
 	      );
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.getEvents();
 	    }
 	  }]);
 
@@ -50785,7 +51162,7 @@
 	exports.default = App;
 
 /***/ },
-/* 549 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50800,9 +51177,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Category = __webpack_require__(550);
+	var _Category = __webpack_require__(548);
 
 	var _Category2 = _interopRequireDefault(_Category);
+
+	var _EventDetails = __webpack_require__(544);
+
+	var _EventDetails2 = _interopRequireDefault(_EventDetails);
+
+	var _reactRouter = __webpack_require__(469);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50818,13 +51201,14 @@
 	  function CategoryList() {
 	    _classCallCheck(this, CategoryList);
 
-	    return _possibleConstructorReturn(this, (CategoryList.__proto__ || Object.getPrototypeOf(CategoryList)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (CategoryList.__proto__ || Object.getPrototypeOf(CategoryList)).call(this));
 	  }
 
 	  _createClass(CategoryList, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props.categoryList);
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'category-list' },
@@ -50835,7 +51219,7 @@
 	            'div',
 	            { className: 'row' },
 	            this.props.categoryList.map(function (category) {
-	              return _react2.default.createElement(_Category2.default, { key: category.id, category: category });
+	              return _react2.default.createElement(_Category2.default, { key: category.id, category: category, handler: _this2.props.handler });
 	            })
 	          )
 	        )
@@ -50849,7 +51233,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 550 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50878,12 +51262,19 @@
 	  function Category() {
 	    _classCallCheck(this, Category);
 
-	    return _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this));
+
+	    _this.state = {
+	      events: []
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Category, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'category' },
@@ -50938,31 +51329,20 @@
 	                _react2.default.createElement(
 	                  'ul',
 	                  null,
-	                  _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    'BlahBlahBlahBlehBlegh'
-	                  ),
-	                  _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    'BlahBlahBlahBlehBlegh'
-	                  ),
-	                  _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    'BlahBlahBlahBlehBlegh'
-	                  ),
-	                  _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    'BlahBlahBlahBlehBlegh'
-	                  ),
-	                  _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    'BlahBlahBlahBlehBlegh'
-	                  )
+	                  this.state.events.map(function (event) {
+	                    return _react2.default.createElement(
+	                      'li',
+	                      { onClick: function onClick() {
+	                          return _this2.props.handler(event);
+	                        } },
+	                      _react2.default.createElement('img', { src: event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", style: { "width": "100px", 'marginRight': '10px', "border-radius": '5px' }, alt: '' }),
+	                      _react2.default.createElement(
+	                        'a',
+	                        null,
+	                        event.name
+	                      )
+	                    );
+	                  })
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -50979,6 +51359,32 @@
 	        )
 	      );
 	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.getEvents();
+	    }
+	  }, {
+	    key: 'getEvents',
+	    value: function getEvents() {
+	      var linkedEvents = [];
+	      $.ajax({
+	        url: '/events',
+	        type: 'GET',
+	        success: function (events) {
+	          var _this3 = this;
+
+	          events.map(function (event) {
+	            if (event.eventbrite.category_id === _this3.props.category.categoryId) {
+	              linkedEvents.push(event);
+	            }
+	          });
+	          this.setState({
+	            events: linkedEvents
+	          });
+	        }.bind(this)
+	      });
+	    }
 	  }]);
 
 	  return Category;
@@ -50987,7 +51393,7 @@
 	exports.default = Category;
 
 /***/ },
-/* 551 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51163,299 +51569,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Logo;
-
-/***/ },
-/* 552 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var EventDetails = function (_React$Component) {
-	  _inherits(EventDetails, _React$Component);
-
-	  function EventDetails(props) {
-	    _classCallCheck(this, EventDetails);
-
-	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props));
-	  }
-
-	  _createClass(EventDetails, [{
-	    key: "render",
-	    value: function render() {
-	      console.log(this.props);
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          "div",
-	          { className: "view hm-black-light" },
-	          _react2.default.createElement("img", { className: "img-fluid", style: { "width": "100%" }, src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" }),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "mask flex-center" },
-	            _react2.default.createElement(
-	              "h1",
-	              { className: "white-text h1-responsive" },
-	              this.props.selectedEvent.name.html
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "wide" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "row margin-top" },
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-7" },
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Start Promoting Now!"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "button",
-	                  { className: "btn btn-lg waves-effect waves-light", style: { "backgroundColor": "#ff5a00" } },
-	                  "Promote with ",
-	                  _react2.default.createElement("img", { src: "img/BitlyLogo.png", className: "img-responsive img-fluid", style: { "width": "60px", "display": "inline" } })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Decription"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "p",
-	                  { className: "card-text" },
-	                  this.props.selectedEvent.description.text
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Prizes"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-3 col-md-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      this.props.gPoint
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      this.props.gReward
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      this.props.sPoint
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      this.props.sReward
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      this.props.bPoint
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      this.props.bReward
-	                    )
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-5" },
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Leaderboard"
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "table-responsive" },
-	                  _react2.default.createElement(
-	                    "table",
-	                    { className: "table table-hover" },
-	                    _react2.default.createElement(
-	                      "thead",
-	                      null,
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement(
-	                          "th",
-	                          null,
-	                          "Username"
-	                        ),
-	                        _react2.default.createElement(
-	                          "th",
-	                          null,
-	                          "Points"
-	                        )
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      "tbody",
-	                      null,
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "author-box" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "h3",
-	                    { className: "h3-responsive text-xs-center" },
-	                    "About Event Organizer"
-	                  ),
-	                  _react2.default.createElement("hr", null),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12", style: { "textAlign": "center" } },
-	                    _react2.default.createElement("img", { src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "", className: " img-circle z-depth-2", style: { "maxWidth": "200px" } })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12" },
-	                    _react2.default.createElement("p", null),
-	                    _react2.default.createElement(
-	                      "p",
-	                      { className: "text-xs-center margin-top" },
-	                      _react2.default.createElement(
-	                        "strong",
-	                        null,
-	                        this.props.selectedEvent.name.html
-	                      )
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return EventDetails;
-	}(_react2.default.Component);
-
-	exports.default = EventDetails;
 
 /***/ }
 /******/ ]);

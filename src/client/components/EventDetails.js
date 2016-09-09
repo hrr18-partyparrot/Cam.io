@@ -2,18 +2,18 @@ import React from 'react';
 
 
 export default class EventDetails extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   render () {
-    console.log(this.props)
+    $('.modal-backdrop').remove() //Quickfix to remove the modal
     return (
       <div>
         <div className="view hm-black-light">
-          <img className="img-fluid" style={{"width":"100%"}} src={this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} alt="" />
+          <img className="img-fluid" style={{"width":"100%"}} src={this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : ''} alt="" />
           <div className="mask flex-center">
-            <h1 className="white-text h1-responsive">{this.props.selectedEvent.name.html}</h1>
+            <h1 className="white-text h1-responsive">{this.props.event.name}</h1>
           </div>
         </div>
 
@@ -23,12 +23,12 @@ export default class EventDetails extends React.Component {
               <div className="card card-block">
                 <h4 className="card-title">Start Promoting Now!</h4>
                 <hr />
-                <button className="btn btn-lg waves-effect waves-light" style={{"backgroundColor":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
+                <button className="btn btn-lg waves-effect waves-light" style={{"background-color":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
                 <hr />
-                <p className="card-text">{this.props.selectedEvent.description.text}</p>
+                <p className="card-text">{this.props.event.desc}</p>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Prizes</h4>
@@ -38,10 +38,10 @@ export default class EventDetails extends React.Component {
                     <img style={{"width":"50px"}} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png" alt="" />
                   </div>
                   <div className="col-md-4" style={{"marginTop":"20px"}}>
-                    <h2 className="h2-responsive">{this.props.gPoint}</h2>
+                    <h2 className="h2-responsive">{this.props.event.gPoint}</h2>
                   </div>
                   <div className="col-md-6" style={{"marginTop":"20px"}}>
-                    <h4 className="h4-responsive">{this.props.gReward}</h4>
+                    <h4 className="h4-responsive">{this.props.event.gReward}</h4>
                   </div>
                 </div>
                 <hr />
@@ -50,10 +50,10 @@ export default class EventDetails extends React.Component {
                     <img style={{"width":"50px"}} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png" alt="" />
                   </div>
                   <div className="col-md-4" style={{"marginTop":"20px"}}>
-                    <h2 className="h2-responsive">{this.props.sPoint}</h2>
+                    <h2 className="h2-responsive">{this.props.event.sPoint}</h2>
                   </div>
                   <div className="col-md-6" style={{"marginTop":"20px"}}>
-                    <h4 className="h4-responsive">{this.props.sReward}</h4>
+                    <h4 className="h4-responsive">{this.props.event.sReward}</h4>
                   </div>
                 </div>
                 <hr />
@@ -62,10 +62,10 @@ export default class EventDetails extends React.Component {
                     <img style={{"width":"50px"}} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png" alt="" />
                   </div>
                   <div className="col-md-4" style={{"marginTop":"20px"}}>
-                    <h2 className="h2-responsive">{this.props.bPoint}</h2>
+                    <h2 className="h2-responsive">{this.props.event.bPoint}</h2>
                   </div>
                   <div className="col-md-6" style={{"marginTop":"20px"}}>
-                    <h4 className="h4-responsive">{this.props.bReward}</h4>
+                    <h4 className="h4-responsive">{this.props.event.bReward}</h4>
                   </div>
                 </div>
               </div>
@@ -83,16 +83,16 @@ export default class EventDetails extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td></td>
-                        <td></td>
+                        <td>John Doe</td>
+                        <td>780 Points</td>
                       </tr>
                       <tr>
-                        <td></td>
-                        <td></td>
+                        <td>Jane Doe</td>
+                        <td>500 Points</td>
                       </tr>
                       <tr>
-                        <td></td>
-                        <td></td>
+                        <td>Bob Doe</td>
+                        <td>330 Points</td>
                       </tr>
                     </tbody>
                   </table>
@@ -103,11 +103,10 @@ export default class EventDetails extends React.Component {
                   <h3 className="h3-responsive text-xs-center">About Event Organizer</h3>
                   <hr />
                   <div className="col-xs-12" style={{"textAlign":"center"}}>
-                    <img src={this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} alt="" className=" img-circle z-depth-2" style={{"maxWidth":"200px"}} />
+                    <img src={this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : ''} alt="" className=" img-circle z-depth-2" style={{"max-width":"200px"}} />
                   </div>
                   <div className="col-xs-12">
-                    <p></p>
-                    <p className="text-xs-center margin-top"><strong>{this.props.selectedEvent.name.html}</strong></p>
+                    <p className="text-xs-center margin-top"><strong>{this.props.event.name}</strong></p>
                   </div>
                 </div>
               </div>
@@ -118,5 +117,3 @@ export default class EventDetails extends React.Component {
     )
   }
 }
-
-

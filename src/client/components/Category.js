@@ -1,6 +1,13 @@
 import React from 'react';
 
 export default class Category extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      events: []
+    }
+  }
+
   render () {
     return (
       <div className='category'>
@@ -23,11 +30,12 @@ export default class Category extends React.Component {
               </div>
               <div className="modal-body">
                 <ul>
-                  <li>BlahBlahBlahBlehBlegh</li>
-                  <li>BlahBlahBlahBlehBlegh</li>
-                  <li>BlahBlahBlahBlehBlegh</li>
-                  <li>BlahBlahBlahBlehBlegh</li>
-                  <li>BlahBlahBlahBlehBlegh</li>
+                  {this.state.events.map(event => {
+                    return (<li onClick={() => this.props.handler(event)}>
+                      <img src={event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "border-radius":'5px'}} alt="" />
+                      <a>{event.name}</a>
+                    </li>)
+                  })}
                 </ul>
               </div>
               <div className="modal-footer">
@@ -38,5 +46,27 @@ export default class Category extends React.Component {
         </div>
       </div>
     )
+  }
+
+  componentWillMount() {
+    this.getEvents();
+  }
+
+  getEvents() {
+    var linkedEvents = [];
+    $.ajax({
+      url: '/events',
+      type: 'GET',
+      success: function(events) {
+        events.map(event => {
+          if (event.eventbrite.category_id === this.props.category.categoryId) {
+            linkedEvents.push(event);
+          }
+        });
+        this.setState({
+          events: linkedEvents
+        })
+      }.bind(this)
+    })
   }
 }
