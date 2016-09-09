@@ -12,7 +12,9 @@ export default class CreateEvent extends React.Component {
       submitted: ""
     }
   }
+
   render () {
+    console.log(this.props)
     var events = this.state.events.map(eventEntry => {
         return (
           <li style={{"marginTop":"20px"}} onClick={ () => this.selectEvent(eventEntry) }>

@@ -40,20 +40,20 @@ body {
 
 /* ---- Carousel Styles ---- */
 .carousel-item:nth-child(1) {
-  background-image: url("http://mdbootstrap.com/images/slides/slide%20(6).jpg");
+  background-image: url("../img/slide-logo-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.4;
 }
 
 .carousel-item:nth-child(2) {
-  background-image: url("http://mdbootstrap.com/images/slides/slide%20(11).jpg");
+  background-image: url("../img/slide-logo-2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .carousel-item:nth-child(3) {
-  background-image: url("http://mdbootstrap.com/images/slides/slide%20(7).jpg");
+  background-image: url("../img/slide-logo-3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

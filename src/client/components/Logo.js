@@ -42,9 +42,9 @@ export default class Logo extends React.Component {
               <div className="flex-center animated fadeInDown">
                 <ul>
                   <li>
-                    <h1 className="h1-responsive">Call us for support</h1></li>
+                    <h1 className="h1-responsive">Click Any Event Below to start Promoting</h1></li>
                   <li>
-                    <p>Our team can help you with any question</p>
+                    <p>and win Amazing Rewards</p>
                   </li>
                 </ul>
               </div>

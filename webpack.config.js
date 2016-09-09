@@ -11,12 +11,7 @@ module.exports = {
     filename: 'src/public/bundle.js'
   },
 
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  },
-
- module: {
+  module: {
     loaders: [
       {
         test: /\.js$/,
