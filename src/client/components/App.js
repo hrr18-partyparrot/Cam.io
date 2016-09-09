@@ -59,7 +59,7 @@ createCategoryList() {
                 id: categories[categories.length-1] ? categories[categories.length-1].id + 1 : 1,
                 title: category.name,
                 categoryId: category.id,
-                imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+                imgUrl: './img/category-1.jpg'
               });
               done.push(category.id)
               this.setState({
