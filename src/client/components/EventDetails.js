@@ -4,6 +4,21 @@ import React from 'react';
 export default class EventDetails extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      shortenedUrl: 'Promotion URL',
+      linkclickscount: 0,
+      username: 'username'
+    }
+  }
+
+  componentWillMount() {
+    this.bitlyShortenLink(this.props.event.eventbrite.url);
+    this.bitlyGetUsername();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    this.bitlyLinkClicks(nextState.shortenedUrl);
   }
 
   render () {
@@ -24,6 +39,8 @@ export default class EventDetails extends React.Component {
                 <h4 className="card-title">Start Promoting Now!</h4>
                 <hr />
                 <button className="btn btn-lg waves-effect waves-light" style={{"backgroundColor":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
+                <hr />
+                <input className="inputId" value={this.state.shortenedUrl} />
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
@@ -83,16 +100,8 @@ export default class EventDetails extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>John Doe</td>
-                        <td>780 Points</td>
-                      </tr>
-                      <tr>
-                        <td>Jane Doe</td>
-                        <td>500 Points</td>
-                      </tr>
-                      <tr>
-                        <td>Bob Doe</td>
-                        <td>330 Points</td>
+                        <td>Max Doe</td>
+                        <td>{this.state.linkclickscount}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -116,4 +125,37 @@ export default class EventDetails extends React.Component {
       </div>
     )
   }
+
+  bitlyLinkClicks(linkclicksurl) {
+    var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+    $.ajax({
+      url: "https://api-ssl.bitly.com/v3/link/clicks?access_token=" + ACCESS_TOKEN + "&link=" + linkclicksurl,
+      type: 'GET',
+
+      success: (data) => {
+        this.setState({linkclickscount: data.data.link_clicks});
+      },
+      error: (data) => {
+        console.error('Failed to get link clicks. Error: ', data);
+      }
+    });
+  }
+
+  bitlyGetUsername() {
+    var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+    $.ajax({
+      url: "https://api-ssl.bitly.com/v3/user/info?access_token=" + ACCESS_TOKEN,
+      type: 'GET',
+
+      success: (data) => {
+        this.setState({username: data.data.full_name});
+      },
+      error: (data) => {
+        console.error('Failed to get bitly username. Error: ', data);
+      }
+    });
+  }
+
 }
