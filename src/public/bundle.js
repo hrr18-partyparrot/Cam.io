@@ -50965,9 +50965,28 @@
 	      );
 	    }
 	  }, {
+	    key: 'bitlyShortenLink',
+	    value: function bitlyShortenLink(currenturl) {
+	      var _this2 = this;
+
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/shorten?access_token=" + ACCESS_TOKEN + "&longUrl=" + currenturl + "&format=txt",
+	        type: 'GET',
+	        success: function success(data) {
+	          _this2.setState({ shortenedUrl: data });
+	          console.log('data bitlyShortenLink ', data);
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get shortened URL. Error: ', data);
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'bitlyLinkClicks',
 	    value: function bitlyLinkClicks(linkclicksurl) {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
@@ -50976,7 +50995,7 @@
 	        type: 'GET',
 
 	        success: function success(data) {
-	          _this2.setState({ linkclickscount: data.data.link_clicks });
+	          _this3.setState({ linkclickscount: data.data.link_clicks });
 	        },
 	        error: function error(data) {
 	          console.error('Failed to get link clicks. Error: ', data);
@@ -50986,7 +51005,7 @@
 	  }, {
 	    key: 'bitlyGetUsername',
 	    value: function bitlyGetUsername() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
@@ -50995,7 +51014,7 @@
 	        type: 'GET',
 
 	        success: function success(data) {
-	          _this3.setState({ username: data.data.full_name });
+	          _this4.setState({ username: data.data.full_name });
 	        },
 	        error: function error(data) {
 	          console.error('Failed to get bitly username. Error: ', data);
