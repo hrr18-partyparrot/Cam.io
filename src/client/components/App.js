@@ -59,7 +59,7 @@ createCategoryList() {
                 id: categories[categories.length-1] ? categories[categories.length-1].id + 1 : 1,
                 title: category.name,
                 categoryId: category.id,
-                imgUrl: './img/category-1.jpg'
+                imgUrl: 'http://www.miamiandbeaches.com/~/media/images/miamiandbeaches/plan-your-trip/gettingaround/miami-from-ft-lauderdale/causeway-miami-skyline-612x338.jpg'
               });
               done.push(category.id)
               this.setState({
