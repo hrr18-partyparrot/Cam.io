@@ -6,6 +6,7 @@ export default class CreateEvent extends React.Component {
     super();
     this.state = {
       events: [],
+      event: [],
       selectedEvent: {}
     }
   }
@@ -18,6 +19,15 @@ export default class CreateEvent extends React.Component {
           </li>
         )
     });
+
+    // var event = this.state.event.map(eventEntry => {
+    //     return (
+    //       <li style={{"marginTop":"20px"}} onClick={ () => this.selectEvent(eventEntry) }>
+    //         <img src={eventEntry === logo ? eventEntry.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "border-radius":'5px'}} alt="" />
+    //         <a>{eventEntry === name ? eventEntry.html : " "}</a>
+    //       </li>
+    //     )
+    // });
 
 
     return (
@@ -139,7 +149,7 @@ export default class CreateEvent extends React.Component {
     var url = `https://www.eventbriteapi.com/v3/events/${id}/?token=YZO3HZ5MJZYKY6QU64H2`;
     Request.get(url).then((response) => {
       this.setState({
-        events: response.body.events
+        event: response.body
       });
     });
   }
