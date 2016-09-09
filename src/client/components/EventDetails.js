@@ -23,7 +23,7 @@ export default class EventDetails extends React.Component {
               <div className="card card-block">
                 <h4 className="card-title">Start Promoting Now!</h4>
                 <hr />
-                <button className="btn btn-lg waves-effect waves-light" style={{"background-color":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
+                <button className="btn btn-lg waves-effect waves-light" style={{"backgroundColor":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
@@ -103,7 +103,7 @@ export default class EventDetails extends React.Component {
                   <h3 className="h3-responsive text-xs-center">About Event Organizer</h3>
                   <hr />
                   <div className="col-xs-12" style={{"textAlign":"center"}}>
-                    <img src={this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : ''} alt="" className=" img-circle z-depth-2" style={{"max-width":"200px"}} />
+                    <img src={this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : ''} alt="" className=" img-circle z-depth-2" style={{"maxWidth":"200px"}} />
                   </div>
                   <div className="col-xs-12">
                     <p className="text-xs-center margin-top"><strong>{this.props.event.name}</strong></p>

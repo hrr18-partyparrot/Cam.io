@@ -50651,7 +50651,7 @@
 	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
 	                  'button',
-	                  { className: 'btn btn-lg waves-effect waves-light', style: { "background-color": "#ff5a00" } },
+	                  { className: 'btn btn-lg waves-effect waves-light', style: { "backgroundColor": "#ff5a00" } },
 	                  'Promote with ',
 	                  _react2.default.createElement('img', { src: 'img/BitlyLogo.png', className: 'img-responsive img-fluid', style: { "width": "60px", "display": "inline" } })
 	                )
@@ -50690,7 +50690,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-4', style: { "margin-top": "20px" } },
+	                    { className: 'col-md-4', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
 	                      'h2',
 	                      { className: 'h2-responsive' },
@@ -50699,7 +50699,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-6', style: { "margin-top": "20px" } },
+	                    { className: 'col-md-6', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
 	                      'h4',
 	                      { className: 'h4-responsive' },
@@ -50718,7 +50718,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-4', style: { "margin-top": "20px" } },
+	                    { className: 'col-md-4', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
 	                      'h2',
 	                      { className: 'h2-responsive' },
@@ -50727,7 +50727,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-6', style: { "margin-top": "20px" } },
+	                    { className: 'col-md-6', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
 	                      'h4',
 	                      { className: 'h4-responsive' },
@@ -50746,7 +50746,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-4', style: { "margin-top": "20px" } },
+	                    { className: 'col-md-4', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
 	                      'h2',
 	                      { className: 'h2-responsive' },
@@ -50755,7 +50755,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-md-6', style: { "margin-top": "20px" } },
+	                    { className: 'col-md-6', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
 	                      'h4',
 	                      { className: 'h4-responsive' },
@@ -50863,8 +50863,8 @@
 	                  _react2.default.createElement('hr', null),
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'col-xs-12', style: { "text-align": "center" } },
-	                    _react2.default.createElement('img', { src: this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : '', alt: '', className: ' img-circle z-depth-2', style: { "max-width": "200px" } })
+	                    { className: 'col-xs-12', style: { "textAlign": "center" } },
+	                    _react2.default.createElement('img', { src: this.props.event.eventbrite ? this.props.event.eventbrite.logo.url : '', alt: '', className: ' img-circle z-depth-2', style: { "maxWidth": "200px" } })
 	                  ),
 	                  _react2.default.createElement(
 	                    'div',
@@ -50875,18 +50875,8 @@
 	                      _react2.default.createElement(
 	                        'strong',
 	                        null,
-	                        'COACHELLA'
+	                        this.props.event.name
 	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat itaque blanditiis natus, ratione.'
-	                    ),
-	                    _react2.default.createElement(
-	                      'p',
-	                      { className: 'hidden-md-down' },
-	                      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae quas libero, esse facere.'
 	                    )
 	                  )
 	                )
@@ -51335,7 +51325,7 @@
 	                      { onClick: function onClick() {
 	                          return _this2.props.handler(event);
 	                        } },
-	                      _react2.default.createElement('img', { src: event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", style: { "width": "100px", 'marginRight': '10px', "border-radius": '5px' }, alt: '' }),
+	                      _react2.default.createElement('img', { src: event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", style: { "width": "100px", 'marginRight': '10px', "borderRadius": '5px' }, alt: '' }),
 	                      _react2.default.createElement(
 	                        'a',
 	                        null,
@@ -51524,7 +51514,7 @@
 	                    _react2.default.createElement(
 	                      'h1',
 	                      { className: 'h1-responsive' },
-	                      'Call us for support'
+	                      'Click Any Event Below to start Promoting'
 	                    )
 	                  ),
 	                  _react2.default.createElement(
@@ -51533,7 +51523,7 @@
 	                    _react2.default.createElement(
 	                      'p',
 	                      null,
-	                      'Our team can help you with any question'
+	                      'and win Amazing Rewards'
 	                    )
 	                  )
 	                )

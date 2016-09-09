@@ -32,7 +32,7 @@ export default class Category extends React.Component {
                 <ul>
                   {this.state.events.map(event => {
                     return (<li onClick={() => this.props.handler(event)}>
-                      <img src={event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "border-radius":'5px'}} alt="" />
+                      <img src={event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "borderRadius":'5px'}} alt="" />
                       <a>{event.name}</a>
                     </li>)
                   })}
