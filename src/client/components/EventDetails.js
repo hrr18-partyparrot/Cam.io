@@ -126,6 +126,22 @@ export default class EventDetails extends React.Component {
     )
   }
 
+  bitlyShortenLink(currenturl) {
+    var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+    $.ajax({
+      url: "https://api-ssl.bitly.com/v3/shorten?access_token=" + ACCESS_TOKEN + "&longUrl=" + currenturl + "&format=txt",
+      type: 'GET',
+      success: (data) => {
+        this.setState({shortenedUrl: data});
+        console.log('data bitlyShortenLink ', data);
+      },
+      error: (data) => {
+        console.error('Failed to get shortened URL. Error: ', data);
+      }
+    });
+  }
+
   bitlyLinkClicks(linkclicksurl) {
     var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
