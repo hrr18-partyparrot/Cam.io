@@ -26,7 +26,11 @@ npm start
 
 #### Prerequisites
 
-You will need to have API keys from [Eventbrite](http://developer.eventbrite.com/), and from [Bitly](https://dev.bitly.com/).
+You will need to have API keys from [Eventbrite](http://developer.eventbrite.com/), [StormPath] (https://api.stormpath.com/login) and from [Bitly](https://dev.bitly.com/).
+
+Evenbrite is our event host integration and the  will serve CRUD for events.
+Stormpath is our user database and authentication.
+Bitly is our integration for referral tracking and creating event related rewards and promotions.
 
 ### License
 
