@@ -1,10 +1,7 @@
 import React from 'react';
 import App from './components/App';
-
 import CreateEvent from './components/CreateEvent';
-
-import Eventbrite from './components/Eventbrite';
-import EventDetails from './components/Event';
+import EventDetails from './components/EventDetails';
 import UserDetails from './components/UserDetails';
 import Index from './components/Index';
 import { Route, IndexRoute } from 'react-router';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class EventDetails extends React.Component {
+export default class Event extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -22,7 +22,7 @@ export default class EventDetails extends React.Component {
               <div className="card card-block">
                 <h4 className="card-title">Start Promoting Now!</h4>
                 <hr />
-                <button className="btn btn-lg waves-effect waves-light" style={{"background-color":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
+                <button className="btn btn-lg waves-effect waves-light" style={{"backgroundColor":"#ff5a00"}}>Promote with <img src="img/BitlyLogo.png" className="img-responsive img-fluid" style={{"width":"60px", "display":"inline"}} /></button>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
@@ -36,11 +36,11 @@ export default class EventDetails extends React.Component {
                   <div className="col-xs-3 col-md-2">
                     <img style={{"width":"50px"}} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png" alt="" />
                   </div>
-                  <div className="col-md-4" style={{"margin-top":"20px"}}>
-                    <h2 className="h2-responsive">1000 Points</h2>
+                  <div className="col-md-4" style={{"marginTop":"20px"}}>
+                    <h2 className="h2-responsive">{this.props.gPoint}</h2>
                   </div>
-                  <div className="col-md-6" style={{"margin-top":"20px"}}>
-                    <h4 className="h4-responsive">2 Tickets Free with Premium Membership</h4>
+                  <div className="col-md-6" style={{"marginTop":"20px"}}>
+                    <h4 className="h4-responsive">{this.props.gReward}</h4>
                   </div>
                 </div>
                 <hr />
@@ -48,11 +48,11 @@ export default class EventDetails extends React.Component {
                   <div className="col-xs-2">
                     <img style={{"width":"50px"}} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png" alt="" />
                   </div>
-                  <div className="col-md-4" style={{"margin-top":"20px"}}>
-                    <h2 className="h2-responsive">500 Points</h2>
+                  <div className="col-md-4" style={{"marginTop":"20px"}}>
+                    <h2 className="h2-responsive">{this.props.sPoint}</h2>
                   </div>
-                  <div className="col-md-6" style={{"margin-top":"20px"}}>
-                    <h4 className="h4-responsive">2 Tickets Free</h4>
+                  <div className="col-md-6" style={{"marginTop":"20px"}}>
+                    <h4 className="h4-responsive">{this.props.sReward}</h4>
                   </div>
                 </div>
                 <hr />
@@ -60,11 +60,11 @@ export default class EventDetails extends React.Component {
                   <div className="col-xs-2">
                     <img style={{"width":"50px"}} src="http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png" alt="" />
                   </div>
-                  <div className="col-md-4" style={{"margin-top":"20px"}}>
-                    <h2 className="h2-responsive">200 Points</h2>
+                  <div className="col-md-4" style={{"marginTop":"20px"}}>
+                    <h2 className="h2-responsive">{this.props.bPoint}</h2>
                   </div>
-                  <div className="col-md-6" style={{"margin-top":"20px"}}>
-                    <h4 className="h4-responsive">1 Ticket Free</h4>
+                  <div className="col-md-6" style={{"marginTop":"20px"}}>
+                    <h4 className="h4-responsive">{this.props.bReward}</h4>
                   </div>
                 </div>
               </div>
@@ -82,16 +82,16 @@ export default class EventDetails extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>John Doe</td>
-                        <td>780 Points</td>
+                        <td></td>
+                        <td></td>
                       </tr>
                       <tr>
-                        <td>Jane Doe</td>
-                        <td>500 Points</td>
+                        <td></td>
+                        <td></td>
                       </tr>
                       <tr>
-                        <td>Bob Doe</td>
-                        <td>330 Points</td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     </tbody>
                   </table>
@@ -101,13 +101,12 @@ export default class EventDetails extends React.Component {
                 <div className="row">
                   <h3 className="h3-responsive text-xs-center">About Event Organizer</h3>
                   <hr />
-                  <div className="col-xs-12" style={{"text-align":"center"}}>
-                    <img src="http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g" alt="" className=" img-circle z-depth-2" style={{"max-width":"200px"}} />
+                  <div className="col-xs-12" style={{"textAlign":"center"}}>
+                    <img src={this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} alt="" className=" img-circle z-depth-2" style={{"maxWidth":"200px"}} />
                   </div>
                   <div className="col-xs-12">
+                    <p></p>
                     <p className="text-xs-center margin-top"><strong>{this.props.selectedEvent.name.html}</strong></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat itaque blanditiis natus, ratione.</p>
-                    <p className="hidden-md-down">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae quas libero, esse facere.</p>
                   </div>
                 </div>
               </div>
