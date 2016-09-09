@@ -35093,7 +35093,7 @@
 	    _react2.default.createElement(_reactStormpath.LogoutRoute, { path: '/logout' }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _CreateEvent2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/eventDetails', component: _EventDetails2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/userdetails', component: _UserDetails2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _UserDetails2.default })
 	  )
 	);
 
@@ -35313,6 +35313,19 @@
 	                _react2.default.createElement(
 	                  _reactStormpath.Authenticated,
 	                  null,
+	                  _react2.default.createElement(
+	                    'li',
+	                    { className: 'nav-item' },
+	                    _react2.default.createElement(
+	                      'button',
+	                      { className: 'btn-flat waves-effect waves-light btn-light' },
+	                      _react2.default.createElement(
+	                        'a',
+	                        { href: '/profile' },
+	                        ' Profile '
+	                      )
+	                    )
+	                  ),
 	                  _react2.default.createElement(
 	                    'li',
 	                    { className: 'nav-item' },
@@ -50579,6 +50592,7 @@
 
 /***/ },
 /* 544 */
+<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50895,6 +50909,8 @@
 
 /***/ },
 /* 545 */
+=======
+>>>>>>> Added in userProfile.
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50917,162 +50933,260 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var UserDetails = function (_React$Component) {
-	  _inherits(UserDetails, _React$Component);
+	var EventDetails = function (_React$Component) {
+	  _inherits(EventDetails, _React$Component);
 
-	  function UserDetails() {
-	    _classCallCheck(this, UserDetails);
+	  function EventDetails(props) {
+	    _classCallCheck(this, EventDetails);
 
-	    return _possibleConstructorReturn(this, (UserDetails.__proto__ || Object.getPrototypeOf(UserDetails)).call(this));
+	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props));
 	  }
 
-	  _createClass(UserDetails, [{
+	  _createClass(EventDetails, [{
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "wide" },
+	        null,
 	        _react2.default.createElement(
 	          "div",
-	          { className: "row margin-top" },
+	          { className: "view hm-black-light" },
+	          _react2.default.createElement("img", { className: "img-fluid", style: { "width": "100%" }, src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" }),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-md-5" },
+	            { className: "mask flex-center" },
+	            _react2.default.createElement(
+	              "h1",
+	              { className: "white-text h1-responsive" },
+	              this.props.selectedEvent.name.html
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "wide" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "row margin-top" },
 	            _react2.default.createElement(
 	              "div",
-	              { className: "author-box" },
+	              { className: "col-md-7" },
 	              _react2.default.createElement(
 	                "div",
-	                { className: "row" },
+	                { className: "card card-block" },
 	                _react2.default.createElement(
-	                  "h3",
-	                  { className: "h3-responsive text-xs-center" },
-	                  "About Event Organizer"
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Start Promoting Now!"
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "button",
+	                  { className: "btn btn-lg waves-effect waves-light", style: { "backgroundColor": "#ff5a00" } },
+	                  "Promote with ",
+	                  _react2.default.createElement("img", { src: "img/BitlyLogo.png", className: "img-responsive img-fluid", style: { "width": "60px", "display": "inline" } })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "card card-block" },
+	                _react2.default.createElement(
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Decription"
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "card-text" },
+	                  this.props.selectedEvent.description.text
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "card card-block" },
+	                _react2.default.createElement(
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Prizes"
 	                ),
 	                _react2.default.createElement("hr", null),
 	                _react2.default.createElement(
 	                  "div",
-	                  { className: "col-xs-12", style: { "text-align": "center" } },
-	                  _react2.default.createElement("img", { src: "http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g", alt: "", className: " img-circle z-depth-2", style: { "max-width": "200px" } })
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-xs-12" },
+	                  { className: "row" },
 	                  _react2.default.createElement(
-	                    "p",
-	                    { className: "text-xs-center margin-top" },
+	                    "div",
+	                    { className: "col-xs-3 col-md-2" },
+	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png", alt: "" })
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-4", style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "strong",
-	                      null,
-	                      "COACHELLA"
+	                      "h2",
+	                      { className: "h2-responsive" },
+	                      this.props.gPoint
 	                    )
 	                  ),
 	                  _react2.default.createElement(
-	                    "p",
-	                    null,
-	                    "Stare at the wall, play with food and get confused by dust. Lounge in doorway cats secretly make all the worlds muffins but hide from vacuum cleaner so intently sniff hand bathe private parts with tongue then lick owner's face jump off balcony, onto stranger's head. If it smells like fish eat as much as you wish where is my slave? I'm getting hungry walk on car leaving trail of paw prints on hood and windshield so leave hair everywhere, but curl into a furry donut so lick butt. "
+	                    "div",
+	                    { className: "col-md-6", style: { "marginTop": "20px" } },
+	                    _react2.default.createElement(
+	                      "h4",
+	                      { className: "h4-responsive" },
+	                      this.props.gReward
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "row" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-2" },
+	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png", alt: "" })
 	                  ),
 	                  _react2.default.createElement(
-	                    "p",
-	                    { className: "hidden-md-down" },
-	                    "Jump off balcony, onto stranger's head knock over christmas tree or lick plastic bags. Get video posted to internet for chasing red dot drink water out of the faucet. Sleep nap play time has closed eyes but still sees you chase dog then run away. Caticus cuteicus has closed eyes but still sees you and human give me attention meow, slap owner's face at 5am until human fills food dish yet sun bathe pee in the shoe. Burrow under covers slap owner's face at 5am until human fills food dish, immediately regret falling into bathtub and unwrap toilet paper so dream about hunting birds and leave fur on owners clothes so scratch the furniture. "
+	                    "div",
+	                    { className: "col-md-4", style: { "marginTop": "20px" } },
+	                    _react2.default.createElement(
+	                      "h2",
+	                      { className: "h2-responsive" },
+	                      this.props.sPoint
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-6", style: { "marginTop": "20px" } },
+	                    _react2.default.createElement(
+	                      "h4",
+	                      { className: "h4-responsive" },
+	                      this.props.sReward
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "row" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-2" },
+	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png", alt: "" })
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-4", style: { "marginTop": "20px" } },
+	                    _react2.default.createElement(
+	                      "h2",
+	                      { className: "h2-responsive" },
+	                      this.props.bPoint
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-6", style: { "marginTop": "20px" } },
+	                    _react2.default.createElement(
+	                      "h4",
+	                      { className: "h4-responsive" },
+	                      this.props.bReward
+	                    )
 	                  )
 	                )
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-md-7" },
+	            ),
 	            _react2.default.createElement(
 	              "div",
-	              { className: "card card-block" },
-	              _react2.default.createElement(
-	                "h4",
-	                { className: "card-title" },
-	                "Events"
-	              ),
-	              _react2.default.createElement("hr", null),
+	              { className: "col-md-5" },
 	              _react2.default.createElement(
 	                "div",
-	                { className: "row" },
+	                { className: "card card-block" },
 	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-xs-3 col-md-2" },
-	                  _react2.default.createElement("img", { src: "http://lorempixel.com/400/400/nightlife", alt: "" })
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Leaderboard"
 	                ),
 	                _react2.default.createElement(
 	                  "div",
-	                  { className: "col-md-7", style: { "margin-top": "20px" } },
+	                  { className: "table-responsive" },
 	                  _react2.default.createElement(
-	                    "h2",
-	                    { className: "h2-responsive" },
-	                    "Cat ipsum dolor sit amet, run outside as soon as door open so destroy the blinds or chirp at birds use lap as chair. Eat and than sleep on your face kitty loves pigs. Throwup on your pillow. Ignore the squirrels, you'll never catch them anyway kitty scratches couch bad kitty mark territory cats secretly make all the worlds muffins, kitty scratches couch bad kitty. Who's the baby. Have secret plans. Poop in the plant pot chase after silly colored fish toys around the house dream about hunting birds cat snacks stick butt in face."
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-md-1", style: { "margin-top": "20px" } },
-	                  _react2.default.createElement(
-	                    "h4",
-	                    { className: "h4-responsive" },
-	                    "20 points"
+	                    "table",
+	                    { className: "table table-hover" },
+	                    _react2.default.createElement(
+	                      "thead",
+	                      null,
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement(
+	                          "th",
+	                          null,
+	                          "Username"
+	                        ),
+	                        _react2.default.createElement(
+	                          "th",
+	                          null,
+	                          "Points"
+	                        )
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      "tbody",
+	                      null,
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement("td", null),
+	                        _react2.default.createElement("td", null)
+	                      ),
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement("td", null),
+	                        _react2.default.createElement("td", null)
+	                      ),
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement("td", null),
+	                        _react2.default.createElement("td", null)
+	                      )
+	                    )
 	                  )
 	                )
 	              ),
-	              _react2.default.createElement("hr", null),
 	              _react2.default.createElement(
 	                "div",
-	                { className: "row" },
+	                { className: "author-box" },
 	                _react2.default.createElement(
 	                  "div",
-	                  { className: "col-xs-3 col-md-2" },
-	                  _react2.default.createElement("img", { src: "http://lorempixel.com/400/400/nightlife", alt: "" })
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-md-6", style: { "margin-top": "20px" } },
+	                  { className: "row" },
 	                  _react2.default.createElement(
-	                    "h2",
-	                    { className: "h2-responsive" },
-	                    "All of a sudden cat goes crazy need to chase tail, for sit on the laptop stare at wall turn and meow stare at wall some more meow again continue staring , scratch leg; meow for can opener to feed me. Claw drapes. Poop in litter box, scratch the walls you call this cat food? or get video posted to internet for chasing red dot but curl up and sleep on the freshly laundered towels climb a tree, wait for a fireman jump to fireman then scratch his face for soft kitty warm kitty little ball of furr make muffins. R"
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-md-2", style: { "margin-top": "20px" } },
+	                    "h3",
+	                    { className: "h3-responsive text-xs-center" },
+	                    "About Event Organizer"
+	                  ),
+	                  _react2.default.createElement("hr", null),
 	                  _react2.default.createElement(
-	                    "h4",
-	                    { className: "h4-responsive" },
-	                    "50 points"
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement("hr", null),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "row" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-xs-3 col-md-2" },
-	                  _react2.default.createElement("img", { src: "http://lorempixel.com/400/400/nightlife", alt: "" })
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-md-7", style: { "margin-top": "20px" } },
+	                    "div",
+	                    { className: "col-xs-12", style: { "textAlign": "center" } },
+	                    _react2.default.createElement("img", { src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "", className: " img-circle z-depth-2", style: { "maxWidth": "200px" } })
+	                  ),
 	                  _react2.default.createElement(
-	                    "h2",
-	                    { className: "h2-responsive" },
-	                    "event description"
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "col-md-1", style: { "margin-top": "20px" } },
-	                  _react2.default.createElement(
-	                    "h4",
-	                    { className: "h4-responsive" },
-	                    "1 Ticket Free"
+	                    "div",
+	                    { className: "col-xs-12" },
+	                    _react2.default.createElement("p", null),
+	                    _react2.default.createElement(
+	                      "p",
+	                      { className: "text-xs-center margin-top" },
+	                      _react2.default.createElement(
+	                        "strong",
+	                        null,
+	                        this.props.selectedEvent.name.html
+	                      )
+	                    )
 	                  )
 	                )
 	              )
@@ -51080,6 +51194,149 @@
 	          )
 	        )
 	      );
+	    }
+	  }]);
+
+	  return EventDetails;
+	}(_react2.default.Component);
+
+	exports.default = EventDetails;
+
+/***/ },
+<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
+/* 546 */
+=======
+/* 545 */
+>>>>>>> Added in userProfile.
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
+	var _CategoryList = __webpack_require__(547);
+=======
+	var _EventList = __webpack_require__(546);
+>>>>>>> Added in userProfile.
+
+	var _EventList2 = _interopRequireDefault(_EventList);
+
+<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
+	var _Logo = __webpack_require__(549);
+=======
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var UserDetails = function (_React$Component) {
+	  _inherits(UserDetails, _React$Component);
+
+	  function UserDetails() {
+	    _classCallCheck(this, UserDetails);
+
+	    var _this = _possibleConstructorReturn(this, (UserDetails.__proto__ || Object.getPrototypeOf(UserDetails)).call(this));
+
+	    _this.state = {
+	      userEvents: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(UserDetails, [{
+	    key: 'render',
+	    value: function render() {
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'wide' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row margin-top' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-md-5' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'author-box' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'h3-responsive text-xs-center' },
+	                  'About Event Organizer'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col-xs-12', style: { "text-align": "center" } },
+	                  _react2.default.createElement('img', { src: 'http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g', alt: '', className: ' img-circle z-depth-2', style: { "max-width": "200px" } })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'col-xs-12' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'text-xs-center margin-top' },
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      'COACHELLA'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Stare at the wall, play with food and get confused by dust. Lounge in doorway cats secretly make all the worlds muffins but hide from vacuum cleaner so intently sniff hand bathe private parts with tongue then lick owner\'s face jump off balcony, onto stranger\'s head. If it smells like fish eat as much as you wish where is my slave? I\'m getting hungry walk on car leaving trail of paw prints on hood and windshield so leave hair everywhere, but curl into a furry donut so lick butt. '
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'hidden-md-down' },
+	                    'Jump off balcony, onto stranger\'s head knock over christmas tree or lick plastic bags. Get video posted to internet for chasing red dot drink water out of the faucet. Sleep nap play time has closed eyes but still sees you chase dog then run away. Caticus cuteicus has closed eyes but still sees you and human give me attention meow, slap owner\'s face at 5am until human fills food dish yet sun bathe pee in the shoe. Burrow under covers slap owner\'s face at 5am until human fills food dish, immediately regret falling into bathtub and unwrap toilet paper so dream about hunting birds and leave fur on owners clothes so scratch the furniture. '
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(_EventList2.default, { events: this.state.userEvents })
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'getUserData',
+	    value: function getUserData() {
+	      var _this2 = this;
+
+	      $.ajax({
+	        url: '/userEvents',
+	        dataType: 'json',
+	        type: 'GET',
+	        success: function success(data) {
+	          console.log('Hey I have the data ', data);
+	          _this2.setState({ userEvents: data });
+	        },
+	        error: function error(err, data) {
+	          console.error(err.toString());
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getUserData();
 	    }
 	  }]);
 
@@ -51104,11 +51361,150 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CategoryList = __webpack_require__(547);
+	var _userEvent = __webpack_require__(547);
+
+	var _userEvent2 = _interopRequireDefault(_userEvent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EventList = function (_React$Component) {
+	  _inherits(EventList, _React$Component);
+
+	  function EventList() {
+	    _classCallCheck(this, EventList);
+
+	    return _possibleConstructorReturn(this, (EventList.__proto__ || Object.getPrototypeOf(EventList)).apply(this, arguments));
+	  }
+
+	  _createClass(EventList, [{
+	    key: 'render',
+
+	    // constructor(props) {
+	    //   super(props);
+	    // }
+	    value: function render() {
+	      var eventNodes = this.props.events.map(function (event) {
+	        return _react2.default.createElement(_userEvent2.default, { event: event });
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-7' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'card card-block' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'card-title' },
+	            'Events'
+	          ),
+	          eventNodes
+	        )
+	      );
+	    }
+	  }]);
+
+	  return EventList;
+	}(_react2.default.Component);
+
+	exports.default = EventList;
+
+/***/ },
+/* 547 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Event = function (_React$Component) {
+	  _inherits(Event, _React$Component);
+
+	  function Event() {
+	    _classCallCheck(this, Event);
+
+	    return _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).apply(this, arguments));
+	  }
+
+	  _createClass(Event, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement("hr", null),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-12" },
+	            _react2.default.createElement("img", { src: this.props.event.eventbrite.logo ? this.props.event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-12", style: { "margin-top": "20px" } },
+	            _react2.default.createElement(
+	              "h2",
+	              { className: "h2-responsive" },
+	              "Test ",
+	              this.props.event.desc
+	            )
+	          )
+	        ),
+	        _react2.default.createElement("hr", null)
+	      );
+	    }
+	  }]);
+
+	  return Event;
+	}(_react2.default.Component);
+
+	exports.default = Event;
+
+/***/ },
+/* 548 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _CategoryList = __webpack_require__(549);
 
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 
-	var _Logo = __webpack_require__(549);
+	var _Logo = __webpack_require__(551);
+>>>>>>> Added in userProfile.
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
