@@ -21,7 +21,7 @@ mongod
 You will also need a localserver on port 8080. You can launch the local server with:
 
 ```sh
-npm start
+Grunt
 ```
 
 #### Prerequisites
