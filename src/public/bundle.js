@@ -35200,7 +35200,7 @@
 	                  id: categories[categories.length - 1] ? categories[categories.length - 1].id + 1 : 1,
 	                  title: category.name,
 	                  categoryId: category.id,
-	                  imgUrl: './img/causeway-miami-skyline-612x338.jpg'
+	                  imgUrl: './img/category-1.jpg'
 	                });
 	                done.push(category.id);
 	                this.setState({
@@ -50965,7 +50965,10 @@
 	      );
 	    }
 	  }, {
+<<<<<<< 8332bbd420f8301ba6ad5d411e7721f9a21426c2
 <<<<<<< f46fe84318dac7f188633fcf32e643f0419cbbec
+=======
+>>>>>>> bugfix
 	    key: 'bitlyShortenLink',
 	    value: function bitlyShortenLink(currenturl) {
 	      var _this2 = this;
@@ -50985,6 +50988,7 @@
 	      });
 	    }
 	  }, {
+<<<<<<< 8332bbd420f8301ba6ad5d411e7721f9a21426c2
 	    key: 'bitlyLinkClicks',
 	    value: function bitlyLinkClicks(linkclicksurl) {
 	      var _this3 = this;
@@ -50993,6 +50997,11 @@
 	    value: function bitlyLinkClicks(linkclicksurl) {
 	      var _this2 = this;
 >>>>>>> rebase
+=======
+	    key: 'bitlyLinkClicks',
+	    value: function bitlyLinkClicks(linkclicksurl) {
+	      var _this3 = this;
+>>>>>>> bugfix
 
 	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
@@ -51001,11 +51010,15 @@
 	        type: 'GET',
 
 	        success: function success(data) {
+<<<<<<< 8332bbd420f8301ba6ad5d411e7721f9a21426c2
 <<<<<<< f46fe84318dac7f188633fcf32e643f0419cbbec
 	          _this3.setState({ linkclickscount: data.data.link_clicks });
 =======
 	          _this2.setState({ linkclickscount: data.data.link_clicks });
 >>>>>>> rebase
+=======
+	          _this3.setState({ linkclickscount: data.data.link_clicks });
+>>>>>>> bugfix
 	        },
 	        error: function error(data) {
 	          console.error('Failed to get link clicks. Error: ', data);
@@ -51015,11 +51028,15 @@
 	  }, {
 	    key: 'bitlyGetUsername',
 	    value: function bitlyGetUsername() {
+<<<<<<< 8332bbd420f8301ba6ad5d411e7721f9a21426c2
 <<<<<<< f46fe84318dac7f188633fcf32e643f0419cbbec
 	      var _this4 = this;
 =======
 	      var _this3 = this;
 >>>>>>> rebase
+=======
+	      var _this4 = this;
+>>>>>>> bugfix
 
 	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
@@ -51028,11 +51045,15 @@
 	        type: 'GET',
 
 	        success: function success(data) {
+<<<<<<< 8332bbd420f8301ba6ad5d411e7721f9a21426c2
 <<<<<<< f46fe84318dac7f188633fcf32e643f0419cbbec
 	          _this4.setState({ username: data.data.full_name });
 =======
 	          _this3.setState({ username: data.data.full_name });
 >>>>>>> rebase
+=======
+	          _this4.setState({ username: data.data.full_name });
+>>>>>>> bugfix
 	        },
 	        error: function error(data) {
 	          console.error('Failed to get bitly username. Error: ', data);
@@ -51552,7 +51573,7 @@
 	                      'li',
 	                      { onClick: function onClick() {
 	                          return _this2.props.handler(event);
-	                        } },
+	                        }, style: { "marginTop": "5px" } },
 	                      _react2.default.createElement('img', { src: event.eventbrite.logo ? event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", style: { "width": "100px", 'marginRight': '10px', "borderRadius": '5px' }, alt: '' }),
 	                      _react2.default.createElement(
 	                        'a',
