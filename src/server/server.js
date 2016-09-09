@@ -6,25 +6,29 @@ var middleware = './middleware/middleware';
 var stormpath = require('express-stormpath');
 var Eventbrite = require('eventbrite-node');
 var config = require('../config/eventbrite');
+var Event = require('./models/event');
 var client = new Eventbrite(config.clientKey, config.clientSecret);
+
+//Alias for heroku ports/db vs local
 var PORT = process.env.PORT || 8080;
 var db =  process.env.MONGODB_URI || 'mongodb://localhost/PartyParrot';
 mongoose.connect(db);
+
 //mongoose's promise library is depricated.
 mongoose.Promise = global.Promise;
 var app = express();
+
 app.use(stormpath.init(app, {
   application:{
     href: 'https://api.stormpath.com/v1/applications/38BYzfpt1mubNI49Sj9nC4'
   },
   website: true
 }));
-
-// require('./middleware/middleware')(app, express);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
-var Event = require('./models/event');
 
+
+//In the interest of time and speed we created one schema to avoid joins
 app.post('/create',stormpath.loginRequired, function(req,res){
   var event = new Event({
   name: req.body.event.name.text,
@@ -67,6 +71,7 @@ app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
 
+//Eventbrite auth. Currently single user.
 app.get('/authentication', function(req, res){
   var authUrl = client.getOAuthUrl();
   res.redirect(authUrl);
@@ -79,7 +84,7 @@ app.get('/authentication', function(req, res){
   });
 });
 
-//test abc 123
+//This is an entry point for stormpath integration.
 app.on('stormpath.ready', function() {
   app.listen(PORT);
 });
