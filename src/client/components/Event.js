@@ -99,7 +99,7 @@ export default class Event extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{this.state.username}</td>
+                        <td>Max Doe</td>
                         <td>{this.state.linkclickscount}</td>
                       </tr>
                     </tbody>
