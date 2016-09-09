@@ -14,7 +14,7 @@ export default (
       <LogoutRoute path="/logout" />
       <Route path ="/create" component={CreateEvent} />
       <Route path ="/eventDetails" component={EventDetails} />
-      <Route path ="/userdetails" component={UserDetails} />
+      <Route path ="/profile" component={UserDetails} />
     </AuthenticatedRoute>
   </Route>
 );

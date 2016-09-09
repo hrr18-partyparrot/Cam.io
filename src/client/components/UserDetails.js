@@ -1,11 +1,16 @@
 import React from 'react';
+import EventList from './EventList';
 
 
 export default class UserDetails extends React.Component {
   constructor() {
     super();
+    this.state  = {
+      userEvents: []
+      }
     }
   render () {
+
     return (
         <div className="wide">
     <div className="row margin-top">
@@ -25,49 +30,30 @@ export default class UserDetails extends React.Component {
           </div>
         </div>
       </div>
-       <div className="col-md-7">
-        <div className="card card-block">
-          <h4 className="card-title">Events</h4>
-          <hr />
-          <div className="row">
-            <div className="col-xs-3 col-md-2">
-              <img src="http://lorempixel.com/400/400/nightlife" alt="" />
-            </div>
-            <div className="col-md-7" style={{"margin-top":"20px"}}>
-              <h2 className="h2-responsive">Cat ipsum dolor sit amet, run outside as soon as door open so destroy the blinds or chirp at birds use lap as chair. Eat and than sleep on your face kitty loves pigs. Throwup on your pillow. Ignore the squirrels, you'll never catch them anyway kitty scratches couch bad kitty mark territory cats secretly make all the worlds muffins, kitty scratches couch bad kitty. Who's the baby. Have secret plans. Poop in the plant pot chase after silly colored fish toys around the house dream about hunting birds cat snacks stick butt in face.</h2>
-            </div>
-            <div className="col-md-1" style={{"margin-top":"20px"}}>
-              <h4 className="h4-responsive">20 points</h4>
-            </div>
-          </div>
-          <hr />
-          <div className="row">
-              <div className="col-xs-3 col-md-2">
-              <img src="http://lorempixel.com/400/400/nightlife" alt="" />
-            </div>
-            <div className="col-md-6" style={{"margin-top":"20px"}}>
-              <h2 className="h2-responsive">All of a sudden cat goes crazy need to chase tail, for sit on the laptop stare at wall turn and meow stare at wall some more meow again continue staring , scratch leg; meow for can opener to feed me. Claw drapes. Poop in litter box, scratch the walls you call this cat food? or get video posted to internet for chasing red dot but curl up and sleep on the freshly laundered towels climb a tree, wait for a fireman jump to fireman then scratch his face for soft kitty warm kitty little ball of furr make muffins. R</h2>
-            </div>
-            <div className="col-md-2" style={{"margin-top":"20px"}}>
-              <h4 className="h4-responsive">50 points</h4>
-            </div>
-          </div>
-          <hr />
-          <div className="row">
-            <div className="col-xs-3 col-md-2">
-              <img src="http://lorempixel.com/400/400/nightlife" alt="" />
-            </div>
-            <div className="col-md-7" style={{"margin-top":"20px"}}>
-              <h2 className="h2-responsive">event description</h2>
-            </div>
-            <div className="col-md-1" style={{"margin-top":"20px"}}>
-              <h4 className="h4-responsive">1 Ticket Free</h4>
-            </div>
-          </div>
-        </div>
-      </div>
+      <EventList events = {this.state.userEvents}/>
     </div>
   </div>
     )
   }
+ getUserData() {
+    $.ajax({
+      url: '/userEvents',
+      dataType: 'json',
+      type: 'GET',
+      success: (data) => {
+        console.log('Hey I have the data ', data);
+        this.setState({userEvents: data});
+      },
+      error: (err,data) => {
+        console.error(err.toString());
+      }
+    });
+  }
+  componentDidMount(){
+    this.getUserData();
+  }
+
 }
+
+
+
