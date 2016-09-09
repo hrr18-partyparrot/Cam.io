@@ -35067,23 +35067,19 @@
 
 	var _CreateEvent2 = _interopRequireDefault(_CreateEvent);
 
-	var _Eventbrite = __webpack_require__(543);
+	var _Eventbrite = __webpack_require__(544);
 
 	var _Eventbrite2 = _interopRequireDefault(_Eventbrite);
 
-	var _Event = __webpack_require__(546);
+	var _Event = __webpack_require__(543);
 
 	var _Event2 = _interopRequireDefault(_Event);
 
-<<<<<<< HEAD
-	var _Index = __webpack_require__(547);
-=======
 	var _UserDetails = __webpack_require__(547);
 
 	var _UserDetails2 = _interopRequireDefault(_UserDetails);
 
 	var _Index = __webpack_require__(548);
->>>>>>> Minor testing on event details
 
 	var _Index2 = _interopRequireDefault(_Index);
 
@@ -35102,7 +35098,8 @@
 	    null,
 	    _react2.default.createElement(_reactStormpath.LogoutRoute, { path: '/logout' }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _CreateEvent2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/eventDetails', component: _Event2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/eventDetails', component: _Event2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/userdetails', component: _UserDetails2.default })
 	  )
 	);
 
@@ -48351,6 +48348,10 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
+	var _Event = __webpack_require__(543);
+
+	var _Event2 = _interopRequireDefault(_Event);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48369,8 +48370,11 @@
 
 	    _this.state = {
 	      events: [],
-	      selectedEvent: {}
+	      event: [],
+	      selectedEvent: {},
+	      submitted: ""
 	    };
+	    _this.event = "";
 	    return _this;
 	  }
 
@@ -48394,8 +48398,6 @@
 	        );
 	      });
 
-<<<<<<< HEAD
-=======
 	      // var event = this.state.event.map(eventEntry => {
 	      //     return (
 	      //       <li style={{"marginTop":"20px"}} onClick={ () => this.selectEvent(eventEntry) }>
@@ -48405,176 +48407,182 @@
 	      //     )
 	      // });
 
-
->>>>>>> Minor testing on event details
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'create-event' },
-	        _react2.default.createElement(
+	      if (!this.state.submitted) {
+	        return _react2.default.createElement(
 	          'div',
-	          { className: 'view hm-black-light' },
-	          _react2.default.createElement('img', { src: 'img/pattern.png', alt: '' }),
+	          { className: 'create-event' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'mask flex-center' },
+	            { className: 'view hm-black-light' },
+	            _react2.default.createElement('img', { src: 'img/pattern.png', alt: '' }),
 	            _react2.default.createElement(
-	              'h1',
-	              { className: 'white-text h1-responsive' },
-	              'Create Your Event'
+	              'div',
+	              { className: 'mask flex-center' },
+	              _react2.default.createElement(
+	                'h1',
+	                { className: 'white-text h1-responsive' },
+	                'Create Your Event'
+	              )
 	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'wide text-md-center', style: { "marginTop": "70px" } },
-	          _react2.default.createElement(
-	            'h2',
-	            { className: 'h2-responsive' },
-	            'Search Your Event On Eventbrite'
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'row margin-top' },
+	            { className: 'wide text-md-center', style: { "marginTop": "70px" } },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-md-6 margin-top' },
-	              _react2.default.createElement(
-	                'h3',
-	                { className: 'h3-responsive' },
-	                'By Id'
-	              ),
-	              _react2.default.createElement('hr', null),
-	              _react2.default.createElement(
-	                'form',
-	                null,
-	                _react2.default.createElement('input', { className: 'inputId', placeholder: 'Event Id...', ref: function ref(input) {
-	                    return _this2.searchById = input;
-	                  } }),
-	                _react2.default.createElement(
-	                  'button',
-	                  { className: 'searchBtn', type: 'button', onClick: function onClick() {
-	                      return _this2.searchId(_this2.searchById.value);
-	                    } },
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: { "marginTop": '3px', "color": "#666" } },
-	                    'search'
-	                  )
-	                )
-	              )
+	              'h2',
+	              { className: 'h2-responsive' },
+	              'Search Your Event On Eventbrite'
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-6 margin-top' },
-	              _react2.default.createElement(
-	                'h3',
-	                { className: 'h3-responsive' },
-	                'By Name'
-	              ),
-	              _react2.default.createElement('hr', null),
-	              _react2.default.createElement(
-	                'form',
-	                { style: { 'width': '100%' } },
-	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event Name...', ref: function ref(input) {
-	                    return _this2.searchByName = input;
-	                  } }),
-	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event City...', style: { 'border-left': 'none' }, ref: function ref(input) {
-	                    return _this2.searchByCity = input;
-	                  } }),
-	                _react2.default.createElement(
-	                  'button',
-	                  { className: 'searchBtn', type: 'button', onClick: function onClick() {
-	                      return _this2.search(_this2.searchByName.value, _this2.searchByCity.value);
-	                    } },
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: { "marginTop": "3px", "color": "#666" } },
-	                    'search'
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12' },
-	              _react2.default.createElement('hr', null),
-	              _react2.default.createElement(
-	                'h2',
-	                { className: 'h2-responsive' },
-	                'Select Your Event'
-	              ),
-	              _react2.default.createElement('input', { className: 'inputId', style: { 'width': '95%' }, placeholder: 'Selected Event...', value: this.state.selectedEvent.name ? this.state.selectedEvent.name.html : "", readonly: 'true', ref: 'eventName' }),
+	              { className: 'row margin-top' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'scrollBox margin-top text-xs-left' },
+	                { className: 'col-md-6 margin-top' },
 	                _react2.default.createElement(
-	                  'ul',
+	                  'h3',
+	                  { className: 'h3-responsive' },
+	                  'By Id'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'form',
 	                  null,
-	                  events
+	                  _react2.default.createElement('input', { className: 'inputId', placeholder: 'Event Id...', ref: function ref(input) {
+	                      return _this2.searchById = input;
+	                    } }),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { className: 'searchBtn', type: 'button', onClick: function onClick() {
+	                        return _this2.searchId(_this2.searchById.value);
+	                      } },
+	                    _react2.default.createElement(
+	                      'i',
+	                      { className: 'material-icons', style: { "marginTop": '3px', "color": "#666" } },
+	                      'search'
+	                    )
+	                  )
 	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12' },
-	              _react2.default.createElement('hr', null),
-	              _react2.default.createElement(
-	                'h2',
-	                { className: 'h2-responsive' },
-	                'Prizes'
-	              ),
-	              _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png', alt: '' }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
-	                  return _this2.gPoint = input;
-	                } }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
-	                  return _this2.gReward = input;
-	                } }),
-	              _react2.default.createElement('div', null),
-	              _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png', alt: '' }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
-	                  return _this2.sPoint = input;
-	                } }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
-	                  return _this2.sReward = input;
-	                } }),
-	              _react2.default.createElement('div', null),
-	              _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png', alt: '' }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
-	                  return _this2.bPoint = input;
-	                } }),
-	              _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
-	                  return _this2.bReward = input;
-	                } })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12' },
-	              _react2.default.createElement('hr', null),
-	              _react2.default.createElement(
-	                'h2',
-	                { className: 'h2-responsive' },
-	                'Post your Event'
 	              ),
 	              _react2.default.createElement(
-	                'button',
-	                { className: 'btn btn-lg btn-default waves-effect waves-light', onClick: function onClick() {
-	                    return _this2.handleSubmit({
-	                      gPoint: _this2.gPoint.value,
-	                      gReward: _this2.gReward.value,
-	                      sPoint: _this2.sPoint.value,
-	                      sReward: _this2.sReward.value,
-	                      bPoint: _this2.bPoint.value,
-	                      bReward: _this2.bReward.value,
-	                      event: _this2.state.selectedEvent
-	                    });
-	                  } },
-	                'Submit'
+	                'div',
+	                { className: 'col-md-6 margin-top' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'h3-responsive' },
+	                  'By Name'
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'form',
+	                  { style: { 'width': '100%' } },
+	                  _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event Name...', ref: function ref(input) {
+	                      return _this2.searchByName = input;
+	                    } }),
+	                  _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event City...', style: { 'border-left': 'none' }, ref: function ref(input) {
+	                      return _this2.searchByCity = input;
+	                    } }),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { className: 'searchBtn', type: 'button', onClick: function onClick() {
+	                        return _this2.search(_this2.searchByName.value, _this2.searchByCity.value);
+	                      } },
+	                    _react2.default.createElement(
+	                      'i',
+	                      { className: 'material-icons', style: { "marginTop": "3px", "color": "#666" } },
+	                      'search'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-12' },
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'h2',
+	                  { className: 'h2-responsive' },
+	                  'Select Your Event'
+	                ),
+	                _react2.default.createElement('input', { className: 'inputId', style: { 'width': '95%' }, placeholder: 'Selected Event...', value: this.state.selectedEvent.name ? this.state.selectedEvent.name.html : "", readonly: 'true', ref: 'eventName' }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'scrollBox margin-top text-xs-left' },
+	                  _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    events
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-12' },
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'h2',
+	                  { className: 'h2-responsive' },
+	                  'Prizes'
+	                ),
+	                _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png', alt: '' }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
+	                    return _this2.gPoint = input;
+	                  } }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
+	                    return _this2.gReward = input;
+	                  } }),
+	                _react2.default.createElement('div', null),
+	                _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png', alt: '' }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
+	                    return _this2.sPoint = input;
+	                  } }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
+	                    return _this2.sReward = input;
+	                  } }),
+	                _react2.default.createElement('div', null),
+	                _react2.default.createElement('img', { style: { "width": "90px", 'border-right': '1px solid rgba(0,0,0,.1)', 'padding': '20px' }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png', alt: '' }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Points to earn..', style: { 'margin': "25px" }, ref: function ref(input) {
+	                    return _this2.bPoint = input;
+	                  } }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Reward...', style: { 'marginTop': "25px" }, ref: function ref(input) {
+	                    return _this2.bReward = input;
+	                  } })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-12' },
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                  'h2',
+	                  { className: 'h2-responsive' },
+	                  'Post your Event'
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn btn-lg btn-default waves-effect waves-light', onClick: function onClick() {
+	                      return _this2.handleSubmit({
+	                        gPoint: _this2.gPoint.value,
+	                        gReward: _this2.gReward.value,
+	                        sPoint: _this2.sPoint.value,
+	                        sReward: _this2.sReward.value,
+	                        bPoint: _this2.bPoint.value,
+	                        bReward: _this2.bReward.value,
+	                        event: _this2.state.selectedEvent
+	                      });
+	                    } },
+	                  'Submit'
+	                )
 	              )
 	            )
 	          )
-	        )
-	      );
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(_Event2.default, { selectedEvent: this.state.selectedEvent })
+	        );
+	      }
 	    }
 	  }, {
 	    key: 'clearForm',
@@ -48592,7 +48600,7 @@
 	    value: function handleSubmit(eventObj) {
 	      var _this3 = this;
 
-	      console.log(eventObj);
+	      //console.log(eventObj);
 	      $.ajax({
 	        url: '/create',
 	        contentType: 'application/json',
@@ -48600,14 +48608,15 @@
 	        data: JSON.stringify(eventObj),
 	        success: function success(data) {
 	          _this3.setState({ data: data });
-	          console.log('data from handleEvent: ', data);
-	          _this3.clearForm();
-	          console.log('event after clear: ', eventObj);
+	          //console.log('data from handleEvent: ', data);
+	          //this.clearForm();
+	          //console.log('event after clear: ', eventObj);
+	          _this3.setState({ submitted: "submitted" });
 	        },
 	        error: function error(xhr, status, err) {
-	          console.error(_this3.props.url, status, err.toString());
+	          //console.error(this.props.url, status, err.toString());
 	          _this3.clearForm();
-	          console.log('event after clear: ', eventObj);
+	          //console.log('event after clear: ', eventObj);
 	        }
 	      });
 	    }
@@ -48631,11 +48640,7 @@
 	      var url = 'https://www.eventbriteapi.com/v3/events/' + id + '/?token=YZO3HZ5MJZYKY6QU64H2';
 	      _superagent2.default.get(url).then(function (response) {
 	        _this5.setState({
-<<<<<<< HEAD
-	          events: response.body.events
-=======
 	          event: response.body
->>>>>>> Minor testing on event details
 	        });
 	      });
 	    }
@@ -50223,6 +50228,331 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EventDetails = function (_React$Component) {
+	  _inherits(EventDetails, _React$Component);
+
+	  function EventDetails(props) {
+	    _classCallCheck(this, EventDetails);
+
+	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props));
+	  }
+
+	  _createClass(EventDetails, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "div",
+	          { className: "view hm-black-light" },
+	          _react2.default.createElement("img", { className: "img-fluid", style: { "width": "100%" }, src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" }),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "mask flex-center" },
+	            _react2.default.createElement(
+	              "h1",
+	              { className: "white-text h1-responsive" },
+	              this.props.selectedEvent.name.html
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "wide" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "row margin-top" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "col-md-7" },
+	              _react2.default.createElement(
+	                "div",
+	                { className: "card card-block" },
+	                _react2.default.createElement(
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Start Promoting Now!"
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "button",
+	                  { className: "btn btn-lg waves-effect waves-light", style: { "background-color": "#ff5a00" } },
+	                  "Promote with ",
+	                  _react2.default.createElement("img", { src: "img/BitlyLogo.png", className: "img-responsive img-fluid", style: { "width": "60px", "display": "inline" } })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "card card-block" },
+	                _react2.default.createElement(
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Decription"
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "p",
+	                  { className: "card-text" },
+	                  this.props.selectedEvent.description.text
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "card card-block" },
+	                _react2.default.createElement(
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Prizes"
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "row" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-3 col-md-2" },
+	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png", alt: "" })
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-4", style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      "h2",
+	                      { className: "h2-responsive" },
+	                      "1000 Points"
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-6", style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      "h4",
+	                      { className: "h4-responsive" },
+	                      "2 Tickets Free with Premium Membership"
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "row" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-2" },
+	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png", alt: "" })
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-4", style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      "h2",
+	                      { className: "h2-responsive" },
+	                      "500 Points"
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-6", style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      "h4",
+	                      { className: "h4-responsive" },
+	                      "2 Tickets Free"
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "row" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-2" },
+	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png", alt: "" })
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-4", style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      "h2",
+	                      { className: "h2-responsive" },
+	                      "200 Points"
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-md-6", style: { "margin-top": "20px" } },
+	                    _react2.default.createElement(
+	                      "h4",
+	                      { className: "h4-responsive" },
+	                      "1 Ticket Free"
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "col-md-5" },
+	              _react2.default.createElement(
+	                "div",
+	                { className: "card card-block" },
+	                _react2.default.createElement(
+	                  "h4",
+	                  { className: "card-title" },
+	                  "Leaderboard"
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "table-responsive" },
+	                  _react2.default.createElement(
+	                    "table",
+	                    { className: "table table-hover" },
+	                    _react2.default.createElement(
+	                      "thead",
+	                      null,
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement(
+	                          "th",
+	                          null,
+	                          "Username"
+	                        ),
+	                        _react2.default.createElement(
+	                          "th",
+	                          null,
+	                          "Points"
+	                        )
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      "tbody",
+	                      null,
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement(
+	                          "td",
+	                          null,
+	                          "John Doe"
+	                        ),
+	                        _react2.default.createElement(
+	                          "td",
+	                          null,
+	                          "780 Points"
+	                        )
+	                      ),
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement(
+	                          "td",
+	                          null,
+	                          "Jane Doe"
+	                        ),
+	                        _react2.default.createElement(
+	                          "td",
+	                          null,
+	                          "500 Points"
+	                        )
+	                      ),
+	                      _react2.default.createElement(
+	                        "tr",
+	                        null,
+	                        _react2.default.createElement(
+	                          "td",
+	                          null,
+	                          "Bob Doe"
+	                        ),
+	                        _react2.default.createElement(
+	                          "td",
+	                          null,
+	                          "330 Points"
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "author-box" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "row" },
+	                  _react2.default.createElement(
+	                    "h3",
+	                    { className: "h3-responsive text-xs-center" },
+	                    "About Event Organizer"
+	                  ),
+	                  _react2.default.createElement("hr", null),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-12", style: { "text-align": "center" } },
+	                    _react2.default.createElement("img", { src: "http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g", alt: "", className: " img-circle z-depth-2", style: { "max-width": "200px" } })
+	                  ),
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "col-xs-12" },
+	                    _react2.default.createElement(
+	                      "p",
+	                      { className: "text-xs-center margin-top" },
+	                      _react2.default.createElement(
+	                        "strong",
+	                        null,
+	                        this.props.selectedEvent.name.html
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      "p",
+	                      null,
+	                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat itaque blanditiis natus, ratione."
+	                    ),
+	                    _react2.default.createElement(
+	                      "p",
+	                      { className: "hidden-md-down" },
+	                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae quas libero, esse facere."
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return EventDetails;
+	}(_react2.default.Component);
+
+	exports.default = EventDetails;
+
+/***/ },
+/* 544 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.default = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -50235,7 +50565,7 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _lodash = __webpack_require__(544);
+	var _lodash = __webpack_require__(545);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -50352,7 +50682,7 @@
 	exports.default = Home;
 
 /***/ },
-/* 544 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -67089,10 +67419,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(545)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(546)(module)))
 
 /***/ },
-/* 545 */
+/* 546 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -67106,331 +67436,6 @@
 		return module;
 	}
 
-
-/***/ },
-/* 546 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var EventDetails = function (_React$Component) {
-	  _inherits(EventDetails, _React$Component);
-
-	  function EventDetails() {
-	    _classCallCheck(this, EventDetails);
-
-	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this));
-	  }
-
-	  _createClass(EventDetails, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          "div",
-	          { className: "view hm-black-light" },
-	          _react2.default.createElement("img", { className: "img-fluid", style: { "width": "100%" }, src: "https://www.finevintageltd.com/assets/images/top-banner-miami.jpg", alt: "" }),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "mask flex-center" },
-	            _react2.default.createElement(
-	              "h1",
-	              { className: "white-text h1-responsive" },
-	              "COACHELLA MUSIC FESTIVAL"
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "wide" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "row margin-top" },
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-7" },
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Start Promoting Now!"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "button",
-	                  { className: "btn btn-lg waves-effect waves-light", style: { "background-color": "#ff5a00" } },
-	                  "Promote with ",
-	                  _react2.default.createElement("img", { src: "img/BitlyLogo.png", className: "img-responsive img-fluid", style: { "width": "60px", "display": "inline" } })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Decription"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "p",
-	                  { className: "card-text" },
-	                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Prizes"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-3 col-md-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "margin-top": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      "1000 Points"
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "margin-top": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      "2 Tickets Free with Premium Membership"
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "margin-top": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      "500 Points"
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "margin-top": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      "2 Tickets Free"
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "margin-top": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      "200 Points"
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "margin-top": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      "1 Ticket Free"
-	                    )
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-5" },
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Leaderboard"
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "table-responsive" },
-	                  _react2.default.createElement(
-	                    "table",
-	                    { className: "table table-hover" },
-	                    _react2.default.createElement(
-	                      "thead",
-	                      null,
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement(
-	                          "th",
-	                          null,
-	                          "Username"
-	                        ),
-	                        _react2.default.createElement(
-	                          "th",
-	                          null,
-	                          "Points"
-	                        )
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      "tbody",
-	                      null,
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement(
-	                          "td",
-	                          null,
-	                          "John Doe"
-	                        ),
-	                        _react2.default.createElement(
-	                          "td",
-	                          null,
-	                          "780 Points"
-	                        )
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement(
-	                          "td",
-	                          null,
-	                          "Jane Doe"
-	                        ),
-	                        _react2.default.createElement(
-	                          "td",
-	                          null,
-	                          "500 Points"
-	                        )
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement(
-	                          "td",
-	                          null,
-	                          "Bob Doe"
-	                        ),
-	                        _react2.default.createElement(
-	                          "td",
-	                          null,
-	                          "330 Points"
-	                        )
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "author-box" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "h3",
-	                    { className: "h3-responsive text-xs-center" },
-	                    "About Event Organizer"
-	                  ),
-	                  _react2.default.createElement("hr", null),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12", style: { "text-align": "center" } },
-	                    _react2.default.createElement("img", { src: "http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g", alt: "", className: " img-circle z-depth-2", style: { "max-width": "200px" } })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12" },
-	                    _react2.default.createElement(
-	                      "p",
-	                      { className: "text-xs-center margin-top" },
-	                      _react2.default.createElement(
-	                        "strong",
-	                        null,
-	                        "COACHELLA"
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      "p",
-	                      null,
-	                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat itaque blanditiis natus, ratione."
-	                    ),
-	                    _react2.default.createElement(
-	                      "p",
-	                      { className: "hidden-md-down" },
-	                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae quas libero, esse facere."
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return EventDetails;
-	}(_react2.default.Component);
-
-	exports.default = EventDetails;
 
 /***/ },
 /* 547 */
@@ -67669,7 +67674,6 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 	    _this.categoryList = [{
-<<<<<<< HEAD
 	      id: 1,
 	      title: 'Nightlife',
 	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
@@ -67691,28 +67695,6 @@
 	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
 	    }, {
 	      id: 6,
-=======
-	      id: ["103"],
-	      title: 'Nightlife',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: ["109", "119"],
-	      title: 'Outdoors',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, { id: ["110"],
-	      title: 'Food',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: ['101'],
-	      title: 'Networking',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: ["199"],
-	      title: 'Festivals',
-	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
-	    }, {
-	      id: ['111'],
->>>>>>> Minor testing on event details
 	      title: 'Music',
 	      imgUrl: './img/causeway-miami-skyline-612x338.jpg'
 	    }];

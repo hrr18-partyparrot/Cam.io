@@ -15,8 +15,8 @@ export default (
     <IndexRoute component={Index} />
     <AuthenticatedRoute>
       <LogoutRoute path="/logout" />
-      <Route path ="/create"  component={CreateEvent} />
-      <Route path ="/eventDetails"  component={EventDetails} />
+      <Route path ="/create" component={CreateEvent} />
+      <Route path ="/eventDetails" component={EventDetails} />
       <Route path ="/userdetails" component={UserDetails} />
     </AuthenticatedRoute>
   </Route>

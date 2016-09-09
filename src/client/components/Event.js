@@ -2,17 +2,17 @@ import React from 'react';
 
 
 export default class EventDetails extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render () {
     return (
       <div>
         <div className="view hm-black-light">
-          <img className="img-fluid" style={{"width":"100%"}} src="https://www.finevintageltd.com/assets/images/top-banner-miami.jpg" alt="" />
+          <img className="img-fluid" style={{"width":"100%"}} src={this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} alt="" />
           <div className="mask flex-center">
-            <h1 className="white-text h1-responsive">COACHELLA MUSIC FESTIVAL</h1>
+            <h1 className="white-text h1-responsive">{this.props.selectedEvent.name.html}</h1>
           </div>
         </div>
 
@@ -27,12 +27,7 @@ export default class EventDetails extends React.Component {
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
                 <hr />
-                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className="card-text">{this.props.selectedEvent.description.text}</p>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Prizes</h4>
@@ -110,7 +105,7 @@ export default class EventDetails extends React.Component {
                     <img src="http://2.gravatar.com/avatar/e9de252843e9ff541060127dac7126ed?s=150&d=mm&r=g" alt="" className=" img-circle z-depth-2" style={{"max-width":"200px"}} />
                   </div>
                   <div className="col-xs-12">
-                    <p className="text-xs-center margin-top"><strong>COACHELLA</strong></p>
+                    <p className="text-xs-center margin-top"><strong>{this.props.selectedEvent.name.html}</strong></p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat itaque blanditiis natus, ratione.</p>
                     <p className="hidden-md-down">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae quas libero, esse facere.</p>
                   </div>

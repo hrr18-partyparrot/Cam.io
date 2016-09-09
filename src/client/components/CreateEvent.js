@@ -1,5 +1,6 @@
 import React from 'react';
 import Request from 'superagent';
+import Event from './Event';
 
 export default class CreateEvent extends React.Component {
   constructor() {
@@ -7,8 +8,10 @@ export default class CreateEvent extends React.Component {
     this.state = {
       events: [],
       event: [],
-      selectedEvent: {}
+      selectedEvent: {},
+      submitted: ""
     }
+    this.event = "";
   }
   render () {
     var events = this.state.events.map(eventEntry => {
@@ -29,7 +32,7 @@ export default class CreateEvent extends React.Component {
     //     )
     // });
 
-
+    if(!this.state.submitted){
     return (
       <div className='create-event'>
         <div className="view hm-black-light">
@@ -101,8 +104,14 @@ export default class CreateEvent extends React.Component {
           </div>
         </div>
       </div>
-    )
+      )
+    }else{
+      return (
+        <div><Event selectedEvent={this.state.selectedEvent} /></div>
+        )
+    }
   }
+
 
   clearForm() {
     this.gPoint.value = "";
@@ -115,7 +124,7 @@ export default class CreateEvent extends React.Component {
   }
 
   handleSubmit(eventObj) {
-    console.log(eventObj);
+    //console.log(eventObj);
     $.ajax({
       url: '/create',
       contentType: 'application/json',
@@ -123,14 +132,15 @@ export default class CreateEvent extends React.Component {
       data: JSON.stringify(eventObj),
       success: (data) => {
         this.setState({data: data});
-        console.log('data from handleEvent: ', data);
-        this.clearForm();
-        console.log('event after clear: ', eventObj);
+        //console.log('data from handleEvent: ', data);
+        //this.clearForm();
+        //console.log('event after clear: ', eventObj);
+        this.setState({submitted: "submitted"});
       },
       error: (xhr, status, err) => {
-        console.error(this.props.url, status, err.toString());
+        //console.error(this.props.url, status, err.toString());
         this.clearForm();
-        console.log('event after clear: ', eventObj);
+        //console.log('event after clear: ', eventObj);
       }
     });
 
