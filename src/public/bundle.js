@@ -35073,7 +35073,7 @@
 
 	var _UserDetails2 = _interopRequireDefault(_UserDetails);
 
-	var _Index = __webpack_require__(546);
+	var _Index = __webpack_require__(548);
 
 	var _Index2 = _interopRequireDefault(_Index);
 
@@ -50302,7 +50302,7 @@
 /* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -50328,157 +50328,177 @@
 	  function Event(props) {
 	    _classCallCheck(this, Event);
 
-	    return _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).call(this, props));
+
+	    _this.state = {
+	      shortenedUrl: 'Promotion URL',
+	      linkclickscount: 0,
+	      username: 'username'
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Event, [{
-	    key: "render",
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.bitlyShortenLink("http://www.amazon.com/");
+	      this.bitlyGetUsername();
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(nextProps, nextState) {
+	      this.bitlyLinkClicks(nextState.shortenedUrl);
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          "div",
-	          { className: "view hm-black-light" },
-	          _react2.default.createElement("img", { className: "img-fluid", style: { "width": "100%" }, src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" }),
+	          'div',
+	          { className: 'view hm-black-light' },
+	          _react2.default.createElement('img', { className: 'img-fluid', style: { "width": "100%" }, src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: '' }),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "mask flex-center" },
+	            'div',
+	            { className: 'mask flex-center' },
 	            _react2.default.createElement(
-	              "h1",
-	              { className: "white-text h1-responsive" },
+	              'h1',
+	              { className: 'white-text h1-responsive' },
 	              this.props.selectedEvent.name.html
 	            )
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "wide" },
+	          'div',
+	          { className: 'wide' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "row margin-top" },
+	            'div',
+	            { className: 'row margin-top' },
 	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-7" },
+	              'div',
+	              { className: 'col-md-7' },
 	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
+	                'div',
+	                { className: 'card card-block' },
 	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Start Promoting Now!"
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Start Promoting Now!'
 	                ),
-	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
-	                  "button",
-	                  { className: "btn btn-lg waves-effect waves-light", style: { "backgroundColor": "#ff5a00" } },
-	                  "Promote with ",
-	                  _react2.default.createElement("img", { src: "img/BitlyLogo.png", className: "img-responsive img-fluid", style: { "width": "60px", "display": "inline" } })
-	                )
+	                  'button',
+	                  { className: 'btn btn-lg waves-effect waves-light', style: { "backgroundColor": "#ff5a00" } },
+	                  'Promote with ',
+	                  _react2.default.createElement('img', { src: 'img/BitlyLogo.png', className: 'img-responsive img-fluid', style: { "width": "60px", "display": "inline" } })
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('input', { className: 'inputId', value: this.state.shortenedUrl })
 	              ),
 	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
+	                'div',
+	                { className: 'card card-block' },
 	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Decription"
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Decription'
 	                ),
-	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
-	                  "p",
-	                  { className: "card-text" },
+	                  'p',
+	                  { className: 'card-text' },
 	                  this.props.selectedEvent.description.text
 	                )
 	              ),
 	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
+	                'div',
+	                { className: 'card card-block' },
 	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Prizes"
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Prizes'
 	                ),
-	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
+	                  'div',
+	                  { className: 'row' },
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-3 col-md-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png", alt: "" })
+	                    'div',
+	                    { className: 'col-xs-3 col-md-2' },
+	                    _react2.default.createElement('img', { style: { "width": "50px" }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png', alt: '' })
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
+	                    'div',
+	                    { className: 'col-md-4', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
+	                      'h2',
+	                      { className: 'h2-responsive' },
 	                      this.props.gPoint
 	                    )
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
+	                    'div',
+	                    { className: 'col-md-6', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
+	                      'h4',
+	                      { className: 'h4-responsive' },
 	                      this.props.gReward
 	                    )
 	                  )
 	                ),
-	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
+	                  'div',
+	                  { className: 'row' },
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png", alt: "" })
+	                    'div',
+	                    { className: 'col-xs-2' },
+	                    _react2.default.createElement('img', { style: { "width": "50px" }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png', alt: '' })
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
+	                    'div',
+	                    { className: 'col-md-4', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
+	                      'h2',
+	                      { className: 'h2-responsive' },
 	                      this.props.sPoint
 	                    )
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
+	                    'div',
+	                    { className: 'col-md-6', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
+	                      'h4',
+	                      { className: 'h4-responsive' },
 	                      this.props.sReward
 	                    )
 	                  )
 	                ),
-	                _react2.default.createElement("hr", null),
+	                _react2.default.createElement('hr', null),
 	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
+	                  'div',
+	                  { className: 'row' },
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png", alt: "" })
+	                    'div',
+	                    { className: 'col-xs-2' },
+	                    _react2.default.createElement('img', { style: { "width": "50px" }, src: 'http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png', alt: '' })
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
+	                    'div',
+	                    { className: 'col-md-4', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
+	                      'h2',
+	                      { className: 'h2-responsive' },
 	                      this.props.bPoint
 	                    )
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
+	                    'div',
+	                    { className: 'col-md-6', style: { "marginTop": "20px" } },
 	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
+	                      'h4',
+	                      { className: 'h4-responsive' },
 	                      this.props.bReward
 	                    )
 	                  )
@@ -50486,91 +50506,87 @@
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-5" },
+	              'div',
+	              { className: 'col-md-5' },
 	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
+	                'div',
+	                { className: 'card card-block' },
 	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Leaderboard"
+	                  'h4',
+	                  { className: 'card-title' },
+	                  'Leaderboard'
 	                ),
 	                _react2.default.createElement(
-	                  "div",
-	                  { className: "table-responsive" },
+	                  'div',
+	                  { className: 'table-responsive' },
 	                  _react2.default.createElement(
-	                    "table",
-	                    { className: "table table-hover" },
+	                    'table',
+	                    { className: 'table table-hover' },
 	                    _react2.default.createElement(
-	                      "thead",
+	                      'thead',
 	                      null,
 	                      _react2.default.createElement(
-	                        "tr",
+	                        'tr',
 	                        null,
 	                        _react2.default.createElement(
-	                          "th",
+	                          'th',
 	                          null,
-	                          "Username"
+	                          'Username'
 	                        ),
 	                        _react2.default.createElement(
-	                          "th",
+	                          'th',
 	                          null,
-	                          "Points"
+	                          'Points'
 	                        )
 	                      )
 	                    ),
 	                    _react2.default.createElement(
-	                      "tbody",
+	                      'tbody',
 	                      null,
 	                      _react2.default.createElement(
-	                        "tr",
+	                        'tr',
 	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          'Max Doe'
+	                        ),
+	                        _react2.default.createElement(
+	                          'td',
+	                          null,
+	                          this.state.linkclickscount
+	                        )
 	                      )
 	                    )
 	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
-	                "div",
-	                { className: "author-box" },
+	                'div',
+	                { className: 'author-box' },
 	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
+	                  'div',
+	                  { className: 'row' },
 	                  _react2.default.createElement(
-	                    "h3",
-	                    { className: "h3-responsive text-xs-center" },
-	                    "About Event Organizer"
+	                    'h3',
+	                    { className: 'h3-responsive text-xs-center' },
+	                    'About Event Organizer'
 	                  ),
-	                  _react2.default.createElement("hr", null),
+	                  _react2.default.createElement('hr', null),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12", style: { "textAlign": "center" } },
-	                    _react2.default.createElement("img", { src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "", className: " img-circle z-depth-2", style: { "maxWidth": "200px" } })
+	                    'div',
+	                    { className: 'col-xs-12', style: { "textAlign": "center" } },
+	                    _react2.default.createElement('img', { src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: '', className: ' img-circle z-depth-2', style: { "maxWidth": "200px" } })
 	                  ),
 	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12" },
-	                    _react2.default.createElement("p", null),
+	                    'div',
+	                    { className: 'col-xs-12' },
+	                    _react2.default.createElement('p', null),
 	                    _react2.default.createElement(
-	                      "p",
-	                      { className: "text-xs-center margin-top" },
+	                      'p',
+	                      { className: 'text-xs-center margin-top' },
 	                      _react2.default.createElement(
-	                        "strong",
+	                        'strong',
 	                        null,
 	                        this.props.selectedEvent.name.html
 	                      )
@@ -50583,6 +50599,63 @@
 	        )
 	      );
 	    }
+	  }, {
+	    key: 'bitlyShortenLink',
+	    value: function bitlyShortenLink(currenturl) {
+	      var _this2 = this;
+
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/shorten?access_token=" + ACCESS_TOKEN + "&longUrl=" + currenturl + "&format=txt",
+	        type: 'GET',
+	        success: function success(data) {
+	          _this2.setState({ shortenedUrl: data });
+	          console.log('data bitlyShortenLink ', data);
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get shortened URL. Error: ', data);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'bitlyLinkClicks',
+	    value: function bitlyLinkClicks(linkclicksurl) {
+	      var _this3 = this;
+
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/link/clicks?access_token=" + ACCESS_TOKEN + "&link=" + linkclicksurl,
+	        type: 'GET',
+
+	        success: function success(data) {
+	          _this3.setState({ linkclickscount: data.data.link_clicks });
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get link clicks. Error: ', data);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'bitlyGetUsername',
+	    value: function bitlyGetUsername() {
+	      var _this4 = this;
+
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
+
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/user/info?access_token=" + ACCESS_TOKEN,
+	        type: 'GET',
+
+	        success: function success(data) {
+	          _this4.setState({ username: data.data.full_name });
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get bitly username. Error: ', data);
+	        }
+	      });
+	    }
 	  }]);
 
 	  return Event;
@@ -50592,7 +50665,6 @@
 
 /***/ },
 /* 544 */
-<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50621,10 +50693,28 @@
 	  function EventDetails() {
 	    _classCallCheck(this, EventDetails);
 
-	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this));
+	    var _this = _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this));
+
+	    _this.state = {
+	      shortenedUrl: 'Promotion URL',
+	      linkclickscount: 0,
+	      username: 'username'
+	    };
+	    return _this;
 	  }
 
 	  _createClass(EventDetails, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.bitlyShortenLink(this.props.event.eventbrite.url);
+	      this.bitlyGetUsername();
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate(nextProps, nextState) {
+	      this.bitlyLinkClicks(nextState.shortenedUrl);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      $('.modal-backdrop').remove(); //Quickfix to remove the modal
@@ -50668,7 +50758,9 @@
 	                  { className: 'btn btn-lg waves-effect waves-light', style: { "backgroundColor": "#ff5a00" } },
 	                  'Promote with ',
 	                  _react2.default.createElement('img', { src: 'img/BitlyLogo.png', className: 'img-responsive img-fluid', style: { "width": "60px", "display": "inline" } })
-	                )
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement('input', { className: 'inputId', value: this.state.shortenedUrl })
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -50823,40 +50915,12 @@
 	                        _react2.default.createElement(
 	                          'td',
 	                          null,
-	                          'John Doe'
+	                          'Max Doe'
 	                        ),
 	                        _react2.default.createElement(
 	                          'td',
 	                          null,
-	                          '780 Points'
-	                        )
-	                      ),
-	                      _react2.default.createElement(
-	                        'tr',
-	                        null,
-	                        _react2.default.createElement(
-	                          'td',
-	                          null,
-	                          'Jane Doe'
-	                        ),
-	                        _react2.default.createElement(
-	                          'td',
-	                          null,
-	                          '500 Points'
-	                        )
-	                      ),
-	                      _react2.default.createElement(
-	                        'tr',
-	                        null,
-	                        _react2.default.createElement(
-	                          'td',
-	                          null,
-	                          'Bob Doe'
-	                        ),
-	                        _react2.default.createElement(
-	                          'td',
-	                          null,
-	                          '330 Points'
+	                          this.state.linkclickscount
 	                        )
 	                      )
 	                    )
@@ -50900,300 +50964,62 @@
 	        )
 	      );
 	    }
-	  }]);
+	  }, {
+	    key: 'bitlyShortenLink',
+	    value: function bitlyShortenLink(currenturl) {
+	      var _this2 = this;
 
-	  return EventDetails;
-	}(_react2.default.Component);
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
-	exports.default = EventDetails;
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/shorten?access_token=" + ACCESS_TOKEN + "&longUrl=" + currenturl + "&format=txt",
+	        type: 'GET',
+	        success: function success(data) {
+	          _this2.setState({ shortenedUrl: data });
+	          console.log('data bitlyShortenLink ', data);
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get shortened URL. Error: ', data);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'bitlyLinkClicks',
+	    value: function bitlyLinkClicks(linkclicksurl) {
+	      var _this3 = this;
 
-/***/ },
-/* 545 */
-=======
->>>>>>> Added in userProfile.
-/***/ function(module, exports, __webpack_require__) {
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
-	"use strict";
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/link/clicks?access_token=" + ACCESS_TOKEN + "&link=" + linkclicksurl,
+	        type: 'GET',
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	        success: function success(data) {
+	          _this3.setState({ linkclickscount: data.data.link_clicks });
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get link clicks. Error: ', data);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'bitlyGetUsername',
+	    value: function bitlyGetUsername() {
+	      var _this4 = this;
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	      var ACCESS_TOKEN = "33edd09b64804a5a8f80eacf8e7ff583ae0b0b35";
 
-	var _react = __webpack_require__(299);
+	      $.ajax({
+	        url: "https://api-ssl.bitly.com/v3/user/info?access_token=" + ACCESS_TOKEN,
+	        type: 'GET',
 
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var EventDetails = function (_React$Component) {
-	  _inherits(EventDetails, _React$Component);
-
-	  function EventDetails(props) {
-	    _classCallCheck(this, EventDetails);
-
-	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props));
-	  }
-
-	  _createClass(EventDetails, [{
-	    key: "render",
-	    value: function render() {
-	      console.log(this.props);
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          "div",
-	          { className: "view hm-black-light" },
-	          _react2.default.createElement("img", { className: "img-fluid", style: { "width": "100%" }, src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" }),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "mask flex-center" },
-	            _react2.default.createElement(
-	              "h1",
-	              { className: "white-text h1-responsive" },
-	              this.props.selectedEvent.name.html
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "wide" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "row margin-top" },
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-7" },
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Start Promoting Now!"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "button",
-	                  { className: "btn btn-lg waves-effect waves-light", style: { "backgroundColor": "#ff5a00" } },
-	                  "Promote with ",
-	                  _react2.default.createElement("img", { src: "img/BitlyLogo.png", className: "img-responsive img-fluid", style: { "width": "60px", "display": "inline" } })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Decription"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "p",
-	                  { className: "card-text" },
-	                  this.props.selectedEvent.description.text
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Prizes"
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-3 col-md-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-gold_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      this.props.gPoint
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      this.props.gReward
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-silver_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      this.props.sPoint
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      this.props.sReward
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-2" },
-	                    _react2.default.createElement("img", { style: { "width": "50px" }, src: "http://ssl.gstatic.com/onebox/sports/olympics/2016/medals2/ic_medal-large-bronze_2x.png", alt: "" })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-4", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h2",
-	                      { className: "h2-responsive" },
-	                      this.props.bPoint
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-6", style: { "marginTop": "20px" } },
-	                    _react2.default.createElement(
-	                      "h4",
-	                      { className: "h4-responsive" },
-	                      this.props.bReward
-	                    )
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              "div",
-	              { className: "col-md-5" },
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card card-block" },
-	                _react2.default.createElement(
-	                  "h4",
-	                  { className: "card-title" },
-	                  "Leaderboard"
-	                ),
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "table-responsive" },
-	                  _react2.default.createElement(
-	                    "table",
-	                    { className: "table table-hover" },
-	                    _react2.default.createElement(
-	                      "thead",
-	                      null,
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement(
-	                          "th",
-	                          null,
-	                          "Username"
-	                        ),
-	                        _react2.default.createElement(
-	                          "th",
-	                          null,
-	                          "Points"
-	                        )
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      "tbody",
-	                      null,
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      ),
-	                      _react2.default.createElement(
-	                        "tr",
-	                        null,
-	                        _react2.default.createElement("td", null),
-	                        _react2.default.createElement("td", null)
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "author-box" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "row" },
-	                  _react2.default.createElement(
-	                    "h3",
-	                    { className: "h3-responsive text-xs-center" },
-	                    "About Event Organizer"
-	                  ),
-	                  _react2.default.createElement("hr", null),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12", style: { "textAlign": "center" } },
-	                    _react2.default.createElement("img", { src: this.props.selectedEvent.logo ? this.props.selectedEvent.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "", className: " img-circle z-depth-2", style: { "maxWidth": "200px" } })
-	                  ),
-	                  _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-12" },
-	                    _react2.default.createElement("p", null),
-	                    _react2.default.createElement(
-	                      "p",
-	                      { className: "text-xs-center margin-top" },
-	                      _react2.default.createElement(
-	                        "strong",
-	                        null,
-	                        this.props.selectedEvent.name.html
-	                      )
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
+	        success: function success(data) {
+	          _this4.setState({ username: data.data.full_name });
+	        },
+	        error: function error(data) {
+	          console.error('Failed to get bitly username. Error: ', data);
+	        }
+	      });
 	    }
 	  }]);
 
@@ -51203,11 +51029,7 @@
 	exports.default = EventDetails;
 
 /***/ },
-<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
-/* 546 */
-=======
 /* 545 */
->>>>>>> Added in userProfile.
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51222,17 +51044,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
-	var _CategoryList = __webpack_require__(547);
-=======
 	var _EventList = __webpack_require__(546);
->>>>>>> Added in userProfile.
 
 	var _EventList2 = _interopRequireDefault(_EventList);
 
-<<<<<<< b6ea6e32726d76d60cd4fe9b7ac6896ea5ee2dd5
-	var _Logo = __webpack_require__(549);
-=======
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51504,7 +51319,6 @@
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 
 	var _Logo = __webpack_require__(551);
->>>>>>> Added in userProfile.
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
@@ -51548,7 +51362,7 @@
 	exports.default = App;
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51563,7 +51377,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Category = __webpack_require__(548);
+	var _Category = __webpack_require__(550);
 
 	var _Category2 = _interopRequireDefault(_Category);
 
@@ -51619,7 +51433,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51779,7 +51593,7 @@
 	exports.default = Category;
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
