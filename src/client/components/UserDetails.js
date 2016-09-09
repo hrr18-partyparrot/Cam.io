@@ -4,10 +4,9 @@ import React from 'react';
 export default class UserDetails extends React.Component {
   constructor() {
     super();
-
     }
-  render (){
-    return(
+  render () {
+    return (
         <div className="wide">
     <div className="row margin-top">
       <div className="col-md-5">

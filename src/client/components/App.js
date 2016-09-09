@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from './Navbar';
 import Footer from './Footer';
-// import RouteHandler from '../routes';
 
 export default class App extends React.Component {
   render () {
@@ -10,7 +9,6 @@ export default class App extends React.Component {
         <NavBar />
         {this.props.children}
         <Footer />
-       <RouteHandler myprops={this.state.text} />
       </div>
     )
   }
