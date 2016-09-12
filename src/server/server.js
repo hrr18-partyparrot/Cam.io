@@ -30,7 +30,9 @@ app.use(stormpath.init(app, {
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
 
-
+app.get('/parrot', function(req,res){
+  res.sendFile(path.join(__dirname, '/../public/parrot.html'));
+})
 //In the interest of time and speed we created one schema to avoid joins
 app.post('/create',stormpath.loginRequired, function(req,res){
   var event = new Event({
@@ -74,11 +76,18 @@ app.get('/secrets', stormpath.loginRequired, function(req,res){
   res.send('Hi ' + req.user.givenName);
 })
 
+<<<<<<< b2d04796c485ef9179d0ab5d5bc3d388c9b080d9
 // If no app.get path was found for request, this is the default, which will
 // then use the react router
+=======
+
+
+>>>>>>> Added demo for party parrot. Script not working as intended.
 app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
+
+
 
 //Eventbrite auth. Currently single user.
 app.get('/authentication', function(req, res){

@@ -35073,9 +35073,13 @@
 
 	var _UserDetails2 = _interopRequireDefault(_UserDetails);
 
-	var _Index = __webpack_require__(546);
+	var _Index = __webpack_require__(548);
 
 	var _Index2 = _interopRequireDefault(_Index);
+
+	var _PartyParrot = __webpack_require__(552);
+
+	var _PartyParrot2 = _interopRequireDefault(_PartyParrot);
 
 	var _reactRouter = __webpack_require__(469);
 
@@ -35093,7 +35097,8 @@
 	    _react2.default.createElement(_reactStormpath.LogoutRoute, { path: '/logout' }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _CreateEvent2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/eventDetails', component: _EventDetails2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _UserDetails2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _UserDetails2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/partyMode', component: _PartyParrot2.default })
 	  )
 	);
 
@@ -51044,7 +51049,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _EventList = __webpack_require__(550);
+	var _EventList = __webpack_require__(546);
 
 	var _EventList2 = _interopRequireDefault(_EventList);
 
@@ -51176,11 +51181,149 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CategoryList = __webpack_require__(547);
+	var _userEvent = __webpack_require__(547);
+
+	var _userEvent2 = _interopRequireDefault(_userEvent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var EventList = function (_React$Component) {
+	  _inherits(EventList, _React$Component);
+
+	  function EventList() {
+	    _classCallCheck(this, EventList);
+
+	    return _possibleConstructorReturn(this, (EventList.__proto__ || Object.getPrototypeOf(EventList)).apply(this, arguments));
+	  }
+
+	  _createClass(EventList, [{
+	    key: 'render',
+
+	    // constructor(props) {
+	    //   super(props);
+	    // }
+	    value: function render() {
+	      var eventNodes = this.props.events.map(function (event) {
+	        return _react2.default.createElement(_userEvent2.default, { event: event });
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-7' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'card card-block' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'card-title' },
+	            'Events'
+	          ),
+	          eventNodes
+	        )
+	      );
+	    }
+	  }]);
+
+	  return EventList;
+	}(_react2.default.Component);
+
+	exports.default = EventList;
+
+/***/ },
+/* 547 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Event = function (_React$Component) {
+	  _inherits(Event, _React$Component);
+
+	  function Event() {
+	    _classCallCheck(this, Event);
+
+	    return _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).apply(this, arguments));
+	  }
+
+	  _createClass(Event, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement("hr", null),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-12" },
+	            _react2.default.createElement("img", { src: this.props.event.eventbrite.logo ? this.props.event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-md-12", style: { "margin-top": "20px" } },
+	            _react2.default.createElement(
+	              "h2",
+	              { className: "h2-responsive" },
+	              "Test ",
+	              this.props.event.desc
+	            )
+	          )
+	        ),
+	        _react2.default.createElement("hr", null)
+	      );
+	    }
+	  }]);
+
+	  return Event;
+	}(_react2.default.Component);
+
+	exports.default = Event;
+
+/***/ },
+/* 548 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _CategoryList = __webpack_require__(549);
 
 	var _CategoryList2 = _interopRequireDefault(_CategoryList);
 
-	var _Logo = __webpack_require__(549);
+	var _Logo = __webpack_require__(551);
 
 	var _Logo2 = _interopRequireDefault(_Logo);
 
@@ -51224,7 +51367,7 @@
 	exports.default = App;
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51239,7 +51382,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Category = __webpack_require__(548);
+	var _Category = __webpack_require__(550);
 
 	var _Category2 = _interopRequireDefault(_Category);
 
@@ -51295,7 +51438,7 @@
 	exports.default = CategoryList;
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51455,7 +51598,7 @@
 	exports.default = Category;
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51633,7 +51776,7 @@
 	exports.default = Logo;
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51648,9 +51791,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _userEvent = __webpack_require__(551);
+	var _pictureFall = __webpack_require__(553);
 
-	var _userEvent2 = _interopRequireDefault(_userEvent);
+	var _pictureFall2 = _interopRequireDefault(_pictureFall);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51660,115 +51803,170 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var EventList = function (_React$Component) {
-	  _inherits(EventList, _React$Component);
+	var UserDetails = function (_React$Component) {
+	  _inherits(UserDetails, _React$Component);
 
-	  function EventList() {
-	    _classCallCheck(this, EventList);
+	  function UserDetails() {
+	    _classCallCheck(this, UserDetails);
 
-	    return _possibleConstructorReturn(this, (EventList.__proto__ || Object.getPrototypeOf(EventList)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (UserDetails.__proto__ || Object.getPrototypeOf(UserDetails)).call(this));
 	  }
 
-	  _createClass(EventList, [{
+	  _createClass(UserDetails, [{
 	    key: 'render',
-
-	    // constructor(props) {
-	    //   super(props);
-	    // }
 	    value: function render() {
-	      var eventNodes = this.props.events.map(function (event) {
-	        return _react2.default.createElement(_userEvent2.default, { event: event });
-	      });
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-md-7' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'card card-block' },
-	          _react2.default.createElement(
-	            'h4',
-	            { className: 'card-title' },
-	            'Events'
-	          ),
-	          eventNodes
-	        )
+	        null,
+	        ' ',
+	        _react2.default.createElement('img', { src: 'https://www.thecelebrationsociety.com/wp-content/uploads/2014/03/Classy_007_and_Mission_Impossible_Themed_Gender_Reveal_Party_MichelleWhitePhotography_occasionsonline042.jpg', style: { "width": "100%", "height": "100%" } })
 	      );
 	    }
 	  }]);
 
-	  return EventList;
+	  return UserDetails;
 	}(_react2.default.Component);
 
-	exports.default = EventList;
+	exports.default = UserDetails;
 
 /***/ },
-/* 551 */
-/***/ function(module, exports, __webpack_require__) {
+/* 553 */
+/***/ function(module, exports) {
 
-	"use strict";
+	/*   Free Script provided by HIOXINDIA            */
+	/*   visit us at http://www.hscripts.com     */
+	/*   This is a copyright product of hioxindia.com */
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var image="http://cultofthepartyparrot.com/sirocco.gif";  //Image path should be given here
+	var no = 55; // No of images should fall
+	var time = 0; // Configure whether image should disappear after x seconds (0=never):
+	var speed = 10; // Fix how fast the image should fall
+	var i, dwidth = 300, dheight = 300;
+	var nht = dheight;
+	var toppos = 0;
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	if(document.all){
+		var ie4up = 1;
+	}else{
+		var ie4up = 0;
+	}
 
-	var _react = __webpack_require__(299);
+	if(document.getElementById && !document.all){
+		var ns6up = 1;
+	}else{
+		var ns6up = 0;
+	}
 
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Event = function (_React$Component) {
-	  _inherits(Event, _React$Component);
-
-	  function Event() {
-	    _classCallCheck(this, Event);
-
-	    return _possibleConstructorReturn(this, (Event.__proto__ || Object.getPrototypeOf(Event)).apply(this, arguments));
+	function getScrollXY() {
+	  var scrOfX = 10, scrOfY = 10;
+	  if( typeof( window.pageYOffset ) == 'number' ) {
+	    //Netscape compliant
+	    scrOfY =window.pageYOffset;
+	    scrOfX = window.pageXOffset;
+	  } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+	    //DOM compliant
+	    scrOfY = document.body.scrollTop;
+	    scrOfX = document.body.scrollLeft;
+	  } else if( document.documentElement &&
+	      ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+	    //IE6 standards compliant mode
+	   scrOfY = document.documentElement.scrollTop;
+	   scrOfX = document.documentElement.scrollLeft;
 	  }
+	  return [ scrOfX, scrOfY ];
+	}
 
-	  _createClass(Event, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement("hr", null),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "row" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-md-12" },
-	            _react2.default.createElement("img", { src: this.props.event.eventbrite.logo ? this.props.event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" })
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-md-12", style: { "margin-top": "20px" } },
-	            _react2.default.createElement(
-	              "h2",
-	              { className: "h2-responsive" },
-	              "Test ",
-	              this.props.event.desc
-	            )
-	          )
-	        ),
-	        _react2.default.createElement("hr", null)
-	      );
-	    }
-	  }]);
+	var timer;
 
-	  return Event;
-	}(_react2.default.Component);
+	function ranrot()
+	{
 
-	exports.default = Event;
+	var a = getScrollXY()
+	if(timer)
+	{
+		clearTimeout(timer);
+	}
+	toppos = a[1];
+	dheight = nht+a[1];
+	//alert(dheight);
+
+	timer = setTimeout('ranrot()',2000);
+	}
+
+	ranrot();
+
+	function iecompattest()
+	{
+		if(document.compatMode && document.compatMode!="BackCompat")
+		{
+			return document.documentElement;
+		}else{
+			return document.body;
+		}
+
+	}
+	if (ns6up) {
+		dwidth = window.innerWidth;
+		dheight = window.innerHeight;
+	}
+	else if (ie4up) {
+		dwidth = iecompattest().clientWidth;
+		dheight = iecompattest().clientHeight;
+	}
+
+	nht = dheight;
+
+	var cv = new Array();
+	var px = new Array();       //position variables
+	var py = new Array();      //position variables
+	var am = new Array();     //amplitude variables
+	var sx = new Array();    //step variables
+	var sy = new Array();   //step variables
+
+	for (i = 0; i < no; ++ i) {
+		cv[i] = 0;
+		px[i] = Math.random()*(dwidth-100);  // set position variables
+		py[i] = Math.random()*dheight;     // set position variables
+		am[i] = Math.random()*20;         // set amplitude variables
+		sx[i] = 0.02 + Math.random()/10;  // set step variables
+		sy[i] = 0.7 + Math.random();    // set step variables
+		document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px;LEFT: 15px;\"><img src='"+image+"' border=\"0\"><\/div>");
+	}
+
+	function animation() {  // animation function
+		for (i = 0; i < no; ++ i) {  // iterate for every dot
+			py[i] += sy[i];
+	      		if (py[i] > dheight-50) {
+	        		px[i] = Math.random()*(dwidth-am[i]-100);
+	        		py[i] = toppos;
+	        		sx[i] = 0.02 + Math.random()/10;
+	        		sy[i] = 0.7 + Math.random();
+	      		}
+	      		cv[i] += sx[i];
+	      		document.getElementById("dot"+i).style.top=py[i]+"px";
+	      		document.getElementById("dot"+i).style.left=px[i] + am[i]*Math.sin(cv[i])+"px";
+	    	}
+	    	atime=setTimeout("animation()", speed);
+
+	}
+
+	function hideimage(){
+		if (window.atime) clearTimeout(atime)
+			for (i=0; i < no; i++)
+				document.getElementById("dot"+i).style.visibility="hidden"
+	}
+	if (ie4up||ns6up){
+	animation();
+	if (time>0)
+		setTimeout("hideimage()", time*1000)
+	}
+	animation();
+
+	/*   Free Script provided by HIOXINDIA            */
+	/*   visit us at http://www.hscripts.com     */
+	/*   This is a copyright product of hioxindia.com */
+
+
 
 /***/ }
 /******/ ]);
