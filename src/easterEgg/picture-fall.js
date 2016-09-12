@@ -2,7 +2,7 @@
 /*   visit us at http://www.hscripts.com     */
 /*   This is a copyright product of hioxindia.com */
 
-var image="http://cultofthepartyparrot.com/sirocco.gif";  //Image path should be given here
+var images=["http://cultofthepartyparrot.com/sirocco.gif","http://cultofthepartyparrot.com/parrots/partyparrot.gif","http://cultofthepartyparrot.com/parrots/middleparrot.gif","http://emojis.slackmojis.com/emojis/images/1471119456/982/fiesta_parrot.gif?1471119456","http://cultofthepartyparrot.com/parrots/parrotdad.gif"];  //Image path should be given here
 var no = 55; // No of images should fall
 var time = 0; // Configure whether image should disappear after x seconds (0=never):
 var speed = 10; // Fix how fast the image should fall
@@ -96,8 +96,8 @@ for (i = 0; i < no; ++ i) {
 	am[i] = Math.random()*20;         // set amplitude variables
 	sx[i] = 0.02 + Math.random()/10;  // set step variables
 	sy[i] = 0.7 + Math.random();    // set step variables
-
-	document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: hidden; TOP: 15px;LEFT: 15px;\"><img src='"+image+"' border=\"0\"><\/div>");
+//TOP: 15px;LEFT: 15px;
+	document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: hidden; \"><img src='"+images[Math.floor(Math.random()*images.length)]+"' border=\"0\"><\/div>");
 }
 
 function animation() {  // animation function
