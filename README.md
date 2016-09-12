@@ -32,6 +32,14 @@ Evenbrite is our event host integration and the  will serve CRUD for events.
 Stormpath is our user database and authentication.
 Bitly is our integration for referral tracking and creating event related rewards and promotions.
 
+## Features Backlog
+- Bit.ly API authentication for individual users with unique event promotion link and click tracking (to be displayed on leaderboard)
+- Social media share API integration (Facebook, Twitter, etc) to make it easy for users to promote unique event link seamlessly onto their social network
+- Tracking event ticket purchases (currently only tracks clicks on link)
+- Eventbrite API authentication for individual users and the ability to create events on CAM.IO that posts to Eventbrite
+- Dynamic reward system (currently just limited to 3 tiers)
+- Addition of user profile dashboard editing capabilities (i.e. bios, profile photo upload, user's created/promoted events etc)
+
 ### License
 
 CAM.IO is ISC licensed.
