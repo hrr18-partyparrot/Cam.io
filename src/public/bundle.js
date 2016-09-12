@@ -51818,8 +51818,9 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        $('div').css('visibility', 'visible'),
 	        ' ',
-	        _react2.default.createElement('img', { src: 'https://www.thecelebrationsociety.com/wp-content/uploads/2014/03/Classy_007_and_Mission_Impossible_Themed_Gender_Reveal_Party_MichelleWhitePhotography_occasionsonline042.jpg', style: { "width": "100%", "height": "100%" } })
+	        $("body").append('<img src="https://www.thecelebrationsociety.com/wp-content/uploads/2014/03/Classy_007_and_Mission_Impossible_Themed_Gender_Reveal_Party_MichelleWhitePhotography_occasionsonline042.jpg" width ="100%" height="100%"></img>')
 	      );
 	    }
 	  }]);
@@ -51844,7 +51845,8 @@
 	var i, dwidth = 300, dheight = 300;
 	var nht = dheight;
 	var toppos = 0;
-
+	var t = 1;
+	window.animation = animation;
 	if(document.all){
 		var ie4up = 1;
 	}else{
@@ -51930,7 +51932,8 @@
 		am[i] = Math.random()*20;         // set amplitude variables
 		sx[i] = 0.02 + Math.random()/10;  // set step variables
 		sy[i] = 0.7 + Math.random();    // set step variables
-		document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px;LEFT: 15px;\"><img src='"+image+"' border=\"0\"><\/div>");
+
+		document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: hidden; TOP: 15px;LEFT: 15px;\"><img src='"+image+"' border=\"0\"><\/div>");
 	}
 
 	function animation() {  // animation function

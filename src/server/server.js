@@ -76,13 +76,9 @@ app.get('/secrets', stormpath.loginRequired, function(req,res){
   res.send('Hi ' + req.user.givenName);
 })
 
-<<<<<<< b2d04796c485ef9179d0ab5d5bc3d388c9b080d9
+
 // If no app.get path was found for request, this is the default, which will
 // then use the react router
-=======
-
-
->>>>>>> Added demo for party parrot. Script not working as intended.
 app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
