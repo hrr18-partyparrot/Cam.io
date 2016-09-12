@@ -48481,15 +48481,6 @@
 	        );
 	      });
 
-	      // var event = this.state.event.map(eventEntry => {
-	      //     return (
-	      //       <li style={{"marginTop":"20px"}} onClick={ () => this.selectEvent(eventEntry) }>
-	      //         <img src={eventEntry === logo ? eventEntry.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "borderRadius":'5px'}} alt="" />
-	      //         <a>{eventEntry === name ? eventEntry.html : " "}</a>
-	      //       </li>
-	      //     )
-	      // });
-
 	      if (!this.state.submitted) {
 	        return _react2.default.createElement(
 	          'div',
@@ -48520,61 +48511,29 @@
 	              'div',
 	              { className: 'row margin-top' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'col-md-6 margin-top' },
-	                _react2.default.createElement(
-	                  'h3',
-	                  { className: 'h3-responsive' },
-	                  'By Id'
-	                ),
-	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(
-	                  'form',
-	                  null,
-	                  _react2.default.createElement('input', { className: 'inputId', placeholder: 'Event Id...', ref: function ref(input) {
-	                      return _this2.searchById = input;
-	                    } }),
-	                  _react2.default.createElement(
-	                    'button',
-	                    { className: 'searchBtn', type: 'button', onClick: function onClick() {
-	                        return _this2.searchId(_this2.searchById.value);
-	                      } },
-	                    _react2.default.createElement(
-	                      'i',
-	                      { className: 'material-icons', style: { "marginTop": '3px', "color": "#666" } },
-	                      'search'
-	                    )
-	                  )
-	                )
+	                'h3',
+	                { className: 'h3-responsive' },
+	                'By Name'
 	              ),
+	              _react2.default.createElement('hr', null),
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'col-md-6 margin-top' },
+	                'form',
+	                { style: { 'width': '100%' } },
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event Keyword...', ref: function ref(input) {
+	                    return _this2.searchByName = input;
+	                  } }),
+	                _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event City...', style: { 'borderLeft': 'none' }, ref: function ref(input) {
+	                    return _this2.searchByCity = input;
+	                  } }),
 	                _react2.default.createElement(
-	                  'h3',
-	                  { className: 'h3-responsive' },
-	                  'By Name'
-	                ),
-	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(
-	                  'form',
-	                  { style: { 'width': '100%' } },
-	                  _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event Name...', ref: function ref(input) {
-	                      return _this2.searchByName = input;
-	                    } }),
-	                  _react2.default.createElement('input', { className: 'inputEventInfo', placeholder: 'Event City...', style: { 'borderLeft': 'none' }, ref: function ref(input) {
-	                      return _this2.searchByCity = input;
-	                    } }),
+	                  'button',
+	                  { className: 'searchBtn', type: 'button', onClick: function onClick() {
+	                      return _this2.search(_this2.searchByName.value, _this2.searchByCity.value);
+	                    } },
 	                  _react2.default.createElement(
-	                    'button',
-	                    { className: 'searchBtn', type: 'button', onClick: function onClick() {
-	                        return _this2.search(_this2.searchByName.value, _this2.searchByCity.value);
-	                      } },
-	                    _react2.default.createElement(
-	                      'i',
-	                      { className: 'material-icons', style: { "marginTop": "3px", "color": "#666" } },
-	                      'search'
-	                    )
+	                    'i',
+	                    { className: 'material-icons', style: { "marginTop": "3px", "color": "#666" } },
+	                    'search'
 	                  )
 	                )
 	              ),
@@ -48587,7 +48546,7 @@
 	                  { className: 'h2-responsive' },
 	                  'Select Your Event'
 	                ),
-	                _react2.default.createElement('input', { className: 'inputId', style: { 'width': '95%' }, placeholder: 'Selected Event...', value: this.state.selectedEvent.name ? this.state.selectedEvent.name.html : "", readOnly: 'true', ref: 'eventName' }),
+	                _react2.default.createElement('input', { className: 'inputId', style: { 'width': '75%' }, placeholder: 'Selected Event...', value: this.state.selectedEvent.name ? this.state.selectedEvent.name.html : "", readOnly: 'true', ref: 'eventName' }),
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'scrollBox margin-top text-xs-left' },
