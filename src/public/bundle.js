@@ -50346,7 +50346,7 @@
 	  _createClass(Event, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.bitlyShortenLink("http://www.amazon.com/");
+	      this.bitlyShortenLink(this.props.selectedEvent.url);
 	      this.bitlyGetUsername();
 	    }
 	  }, {
@@ -51781,7 +51781,6 @@
 
 	exports.default = Logo;
 
-<<<<<<< ac6a32b172095974b1fcdaa4f30da17a08293093
 /***/ },
 /* 552 */
 /***/ function(module, exports, __webpack_require__) {
@@ -51978,7 +51977,5 @@
 
 
 
-=======
->>>>>>> rebase
 /***/ }
 /******/ ]);
