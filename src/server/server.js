@@ -18,6 +18,9 @@ mongoose.connect(db);
 mongoose.Promise = global.Promise;
 var app = express();
 
+// Setups stormpath. The application:{href: https://..} is unique to the
+// storm path application being used to do the authentication for this app.
+// Please change this for your application
 app.use(stormpath.init(app, {
   application:{
     href: 'https://api.stormpath.com/v1/applications/38BYzfpt1mubNI49Sj9nC4'
@@ -49,6 +52,7 @@ app.post('/create',stormpath.loginRequired, function(req,res){
   });
 });
 
+// Returns all events independent of what user is logged in
 app.get('/events', function (req, res, next) {
   Event.find(function(err, events) {
     if (err) { console.error(err) }
@@ -56,6 +60,7 @@ app.get('/events', function (req, res, next) {
   })
 })
 
+// Returns events that only the user who is logged in has created
 app.get('/userEvents', stormpath.loginRequired, function(req,res) {
   Event.find({'owner': req.user.username}, function(err, event) {
     if (err) console.error(err);
@@ -63,10 +68,14 @@ app.get('/userEvents', stormpath.loginRequired, function(req,res) {
   })
 })
 
+// This is only a test to see if the user is authenticated, and not needed
+// for this project.
 app.get('/secrets', stormpath.loginRequired, function(req,res){
   res.send('Hi ' + req.user.givenName);
 })
 
+// If no app.get path was found for request, this is the default, which will
+// then use the react router
 app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
