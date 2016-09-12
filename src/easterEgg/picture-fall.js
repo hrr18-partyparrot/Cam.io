@@ -9,7 +9,8 @@ var speed = 10; // Fix how fast the image should fall
 var i, dwidth = 300, dheight = 300;
 var nht = dheight;
 var toppos = 0;
-
+var t = 1;
+window.animation = animation;
 if(document.all){
 	var ie4up = 1;
 }else{
@@ -95,7 +96,8 @@ for (i = 0; i < no; ++ i) {
 	am[i] = Math.random()*20;         // set amplitude variables
 	sx[i] = 0.02 + Math.random()/10;  // set step variables
 	sy[i] = 0.7 + Math.random();    // set step variables
-	document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: visible; TOP: 15px;LEFT: 15px;\"><img src='"+image+"' border=\"0\"><\/div>");
+
+	document.write("<div id=\"dot"+ i +"\" style=\"POSITION: absolute; Z-INDEX: "+ i +"; VISIBILITY: hidden; TOP: 15px;LEFT: 15px;\"><img src='"+image+"' border=\"0\"><\/div>");
 }
 
 function animation() {  // animation function
