@@ -29,8 +29,8 @@ Grunt
 You will need to have API keys from [Eventbrite](http://developer.eventbrite.com/), [StormPath] (https://api.stormpath.com/login) and from [Bitly](https://dev.bitly.com/).
 
 - StormPath API keys are stored in root/apiKey.properties.
--Eventbrite API keys are stored in root/src/config/eventbrite.js (if you want to create users authentication through eventbrite) and in root/src/client/components/CreatEvent.js as token in the request to eventbrite in the serach and serachID methods.
--Bityl API keys are stored in root/src/client/components/EventDetails.js (they are called ACCESS_TOKEN are are used in several methods within this file)
+- Eventbrite API keys are stored in root/src/config/eventbrite.js (if you want to create users authentication through eventbrite) and in root/src/client/components/CreatEvent.js as token in the request to eventbrite in the serach and serachID methods.
+- Bityl API keys are stored in root/src/client/components/EventDetails.js (they are called ACCESS_TOKEN are are used in several methods within this file)
 
 
 
