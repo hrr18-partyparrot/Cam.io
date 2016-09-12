@@ -17,6 +17,11 @@ export default class Event extends React.Component {
     this.bitlyGetUsername();
   }
 
+  componentDidMount() {
+    $('.card-text').append(this.props.selectedEvent.description.html)
+  }
+
+
   componentWillUpdate(nextProps, nextState) {
     this.bitlyLinkClicks(nextState.shortenedUrl);
   }
@@ -44,7 +49,7 @@ export default class Event extends React.Component {
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
                 <hr />
-                <p className="card-text">{this.props.selectedEvent.description.text}</p>
+                <p className="card-text"></p>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Prizes</h4>
