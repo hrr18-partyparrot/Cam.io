@@ -50413,7 +50413,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'card-text' },
-	                  this.props.selectedEvent.description.text
+	                  this.props.selectedEvent.description.html
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -51775,6 +51775,7 @@
 
 	exports.default = Logo;
 
+<<<<<<< ac6a32b172095974b1fcdaa4f30da17a08293093
 /***/ },
 /* 552 */
 /***/ function(module, exports, __webpack_require__) {
@@ -51971,5 +51972,7 @@
 
 
 
+=======
+>>>>>>> rebase
 /***/ }
 /******/ ]);
