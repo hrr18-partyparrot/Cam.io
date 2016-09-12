@@ -1,6 +1,11 @@
 import React from 'react';
 
 export default class Event extends React.Component {
+
+   componentDidMount() {
+    $('.card-txt').append(this.props.event.eventbrite.description.html)
+  }
+
   render(){
     return (
       <div>
@@ -11,7 +16,7 @@ export default class Event extends React.Component {
             </div>
 
             <div className="col-md-12" style={{"margin-top":"20px"}}>
-              <h2 className="h2-responsive">Test {this.props.event.desc}</h2>
+              <p className="card-txt"></p>
             </div>
           </div>
           <hr />

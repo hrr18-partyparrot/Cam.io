@@ -16,13 +16,16 @@ export default class EventDetails extends React.Component {
     this.bitlyShortenLink(this.props.event.eventbrite.url);
     this.bitlyGetUsername();
   }
+  componentDidMount() {
+    $('.card-text').append(this.props.event.eventbrite.description.html)
+  }
 
   componentWillUpdate(nextProps, nextState) {
     this.bitlyLinkClicks(nextState.shortenedUrl);
   }
 
   render () {
-    $('.modal-backdrop').remove() //Quickfix to remove the modal
+    $('.modal-backdrop').remove() // Quickfix to remove the modal
     return (
       <div>
         <div className="view hm-black-light">
@@ -45,7 +48,7 @@ export default class EventDetails extends React.Component {
               <div className="card card-block">
                 <h4 className="card-title">Decription</h4>
                 <hr />
-                <p className="card-text">{this.props.event.desc}</p>
+                <p className="card-text"> </p>
               </div>
               <div className="card card-block">
                 <h4 className="card-title">Prizes</h4>

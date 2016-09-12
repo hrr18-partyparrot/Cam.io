@@ -50346,8 +50346,13 @@
 	  _createClass(Event, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.bitlyShortenLink("http://www.amazon.com/");
+	      this.bitlyShortenLink(this.props.selectedEvent.url);
 	      this.bitlyGetUsername();
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      $('.card-text').append(this.props.selectedEvent.description.html);
 	    }
 	  }, {
 	    key: 'componentWillUpdate',
@@ -50410,11 +50415,7 @@
 	                  'Decription'
 	                ),
 	                _react2.default.createElement('hr', null),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'card-text' },
-	                  this.props.selectedEvent.description.text
-	                )
+	                _react2.default.createElement('p', { className: 'card-text' })
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -50715,6 +50716,11 @@
 	      this.bitlyGetUsername();
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      $('.card-text').append(this.props.event.eventbrite.description.html);
+	    }
+	  }, {
 	    key: 'componentWillUpdate',
 	    value: function componentWillUpdate(nextProps, nextState) {
 	      this.bitlyLinkClicks(nextState.shortenedUrl);
@@ -50722,7 +50728,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      $('.modal-backdrop').remove(); //Quickfix to remove the modal
+	      $('.modal-backdrop').remove(); // Quickfix to remove the modal
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -50779,7 +50785,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'card-text' },
-	                  this.props.event.desc
+	                  ' '
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -51238,7 +51244,7 @@
 /* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -51268,32 +51274,32 @@
 	  }
 
 	  _createClass(Event, [{
-	    key: "render",
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      $('.card-txt').append(this.props.event.eventbrite.description.html);
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
-	        _react2.default.createElement("hr", null),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "row" },
+	          'div',
+	          { className: 'row' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "col-md-12" },
-	            _react2.default.createElement("img", { src: this.props.event.eventbrite.logo ? this.props.event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: "" })
+	            'div',
+	            { className: 'col-md-12' },
+	            _react2.default.createElement('img', { src: this.props.event.eventbrite.logo ? this.props.event.eventbrite.logo.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png", alt: '' })
 	          ),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "col-md-12", style: { "margin-top": "20px" } },
-	            _react2.default.createElement(
-	              "h2",
-	              { className: "h2-responsive" },
-	              "Test ",
-	              this.props.event.desc
-	            )
+	            'div',
+	            { className: 'col-md-12', style: { "margin-top": "20px" } },
+	            _react2.default.createElement('p', { className: 'card-txt' })
 	          )
 	        ),
-	        _react2.default.createElement("hr", null)
+	        _react2.default.createElement('hr', null)
 	      );
 	    }
 	  }]);
