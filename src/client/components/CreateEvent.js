@@ -24,15 +24,6 @@ export default class CreateEvent extends React.Component {
         )
     });
 
-    // var event = this.state.event.map(eventEntry => {
-    //     return (
-    //       <li style={{"marginTop":"20px"}} onClick={ () => this.selectEvent(eventEntry) }>
-    //         <img src={eventEntry === logo ? eventEntry.url : "http://130.211.52.161/tradeo-content/themes/nucleare-pro/images/no-image-box.png"} style={{"width":"100px", 'marginRight':'10px', "borderRadius":'5px'}} alt="" />
-    //         <a>{eventEntry === name ? eventEntry.html : " "}</a>
-    //       </li>
-    //     )
-    // });
-
     if(!this.state.submitted){
     return (
       <div className='create-event'>
@@ -46,27 +37,17 @@ export default class CreateEvent extends React.Component {
         <div className="wide text-md-center" style={{"marginTop":"70px"}}>
           <h2 className="h2-responsive">Search Your Event On Eventbrite</h2>
           <div className="row margin-top">
-            <div className="col-md-6 margin-top">
-              <h3 className="h3-responsive">By Id</h3>
-              <hr />
-              <form>
-                <input className="inputId" placeholder="Event Id..." ref ={ (input) => this.searchById = input } />
-                <button className="searchBtn" type='button' onClick = { () => this.searchId(this.searchById.value) }><i className="material-icons" style={{"marginTop":'3px', "color":"#666"}}>search</i></button>
-              </form>
-            </div>
-            <div className="col-md-6 margin-top">
-              <h3 className="h3-responsive">By Name</h3>
-              <hr />
-              <form style={{ 'width':'100%' }}>
-                <input className="inputEventInfo" placeholder="Event Name..." ref ={ (input) => this.searchByName = input } />
-                <input className="inputEventInfo" placeholder="Event City..." style={{ 'borderLeft':'none' }} ref ={ (input) => this.searchByCity = input } />
-                <button className="searchBtn" type='button' onClick = { () => this.search(this.searchByName.value, this.searchByCity.value) }><i className="material-icons" style={{"marginTop":"3px", "color":"#666"}}>search</i></button>
-              </form>
-            </div>
+            <h3 className="h3-responsive">By Name</h3>
+            <hr />
+            <form style={{ 'width':'100%' }}>
+              <input className="inputEventInfo" placeholder="Event Keyword..." ref ={ (input) => this.searchByName = input } />
+              <input className="inputEventInfo" placeholder="Event City..." style={{ 'borderLeft':'none' }} ref ={ (input) => this.searchByCity = input } />
+              <button className="searchBtn" type='button' onClick = { () => this.search(this.searchByName.value, this.searchByCity.value) }><i className="material-icons" style={{"marginTop":"3px", "color":"#666"}}>search</i></button>
+            </form>
             <div className="col-xs-12">
               <hr />
               <h2 className="h2-responsive">Select Your Event</h2>
-              <input className="inputId" style={{ 'width':'95%' }} placeholder="Selected Event..." value={this.state.selectedEvent.name ? this.state.selectedEvent.name.html : ""} readOnly="true" ref="eventName"/>
+              <input className="inputId" style={{ 'width':'75%' }} placeholder="Selected Event..." value={this.state.selectedEvent.name ? this.state.selectedEvent.name.html : ""} readOnly="true" ref="eventName"/>
               <div className="scrollBox margin-top text-xs-left">
                 <ul>
                   {events}
