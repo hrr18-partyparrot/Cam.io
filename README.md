@@ -1,4 +1,13 @@
-# CAM.IO by HRR18 PartyParrots
+# Project Name
+
+>CAMIO
+
+## Team
+
+  - __Product Owner__: Ryan Busby
+  - __Scrum Master__: Hoon Bae
+  - __Development Team Members__: Yasser Mahmud,John Smalley, Tyler Predale
+  
 
 CAM.IO is an Event promotion tool. The aim of CAM.IO is to allow event organizers to post events, with incentives for promoters who get the highest number of clicks on their unique URL.
 
