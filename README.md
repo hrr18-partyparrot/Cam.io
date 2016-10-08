@@ -6,9 +6,9 @@
 
   - __Product Owner__: Ryan Busby
   - __Scrum Master__: Hoon Bae
-  - __Development Team Members__: Yasser Mahmud,John Smalley, Tyler Predale
+  - __Development Team Members__: Yasser Mahmud, John Smalley, Tyler Predale
   
-
+## Description
 CAM.IO is an Event promotion tool. The aim of CAM.IO is to allow event organizers to post events, with incentives for promoters who get the highest number of clicks on their unique URL.
 
 * **Organizers:** CAM.IO makes it easy to gamify the event promotion process. We are your connection to the social influencers, who will help make your event a success.
